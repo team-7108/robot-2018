@@ -49,9 +49,12 @@ import edu.wpi.first.wpilibj.command.Command;
 		System.out.print("Power: ");
 		System.out.println(power);
 		error_old = error;
-		if(yawAngle < angle+1 && yawAngle > angle-1) {
+		if(yawAngle < angle+accuracy && yawAngle > angle-accuracy) {
 			System.out.println("Kedicik");
 			true_flag++;
+		}
+		else {
+			true_flag = 0;
 		}
 	}
 	protected boolean isFinished() {
