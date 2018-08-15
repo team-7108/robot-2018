@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
 	public class AutonomousTurnPID extends Command {
 		double angle, power;
 		double yawAngle = Robot.gyro.getAngle();
-		double kP =  0.003;
-		double kD = 0.012;
+		double kP =  0.009;
+		double kD = 0.0138;
 		double error = angle-yawAngle;
 		double error_old = error;
 		int true_flag = 0;

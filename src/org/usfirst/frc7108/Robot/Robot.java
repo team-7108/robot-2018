@@ -175,7 +175,7 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         ultrasonic.ultrasonic1();
-        ultrasonic.ultrasonic2();
+        //ultrasonic.ultrasonic2();
         
     }
 

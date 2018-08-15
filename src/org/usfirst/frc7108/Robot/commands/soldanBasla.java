@@ -9,7 +9,7 @@ public class soldanBasla extends CommandGroup{
 	public soldanBasla(){
 		requires(Robot.sase);
 		this.addSequential(new AutonomousDrivePID(300));
-	
+		this.addSequential(new AutonomousTurnPID(90));
 		
 	}
 }
