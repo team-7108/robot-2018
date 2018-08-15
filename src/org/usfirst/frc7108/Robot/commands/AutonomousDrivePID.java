@@ -1,4 +1,4 @@
-//ALÝ KOÇ BAÞKANIM YARDIM ET
+//ALI KOC BASKANIM YARDIM ET
 package org.usfirst.frc7108.Robot.commands;
 
 
@@ -23,7 +23,7 @@ public class AutonomousDrivePID extends Command {
     	requires(Robot.sase);
     //	requires(Robot.sonAV);
     	this.distance= _distance;
-    	
+    
     }
 
     // Called just before this Command runs the first time
@@ -34,7 +34,7 @@ public class AutonomousDrivePID extends Command {
     protected void execute() {
     	
     	
-    	distance= Robot.sonAV;
+    	//distancee= Robot.sonAV;
     	distance_error= distance-distancee;
     	
 		
@@ -42,23 +42,24 @@ public class AutonomousDrivePID extends Command {
 		
 		
 		if (distance_error<0) {
-			power = -0.2 + (kP*distance_error+(kD*(distance-distance_oldError)));	
+			power = -0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 			
 		}
 		else {
-			power = 0.2 + (kP*distance_error+(kD*(distance-distance_oldError)));	
+			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
 		
 		if (power>1)
 		{power=1;}
 		else if(power < -1)
 		{power=-1;}
+		//Robot.sase.otonomDuz(power);
 		System.out.println("Measured :");
 		System.out.println(distance);
 		System.out.println("Error");
-	System.out.println(distance_error);
-	  System.out.println("Power :       "); 
-		     System.out.println(power);
+		System.out.println(distance_error);
+		System.out.println("Power :"); 
+		System.out.println(power);
 		     
 		     
 		     
@@ -68,8 +69,11 @@ public class AutonomousDrivePID extends Command {
 		true_flag++;
 		
 	}
-	else {true_flag=0
-			;}
+	else 
+	{
+		true_flag=0;
+		
+	}
 	
 	
 	
@@ -81,21 +85,12 @@ public class AutonomousDrivePID extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (true_flag>=5) {
-    		return true
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				;
+    		return true;
     	}
-    else { return false
-    		;}
+    else {
+    	return false;
+    	
+    }
     }
 
     // Called once after isFinished returns true
