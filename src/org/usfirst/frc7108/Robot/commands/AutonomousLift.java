@@ -7,9 +7,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Lift extends Command{
+public class AutonomousLift extends Command{
 
-	public Lift() {
+	public AutonomousLift() {
 		requires(Robot.clifter);
 		
 	}
@@ -17,7 +17,7 @@ public class Lift extends Command{
 		
 	}
 	protected void execute() {
-		 Robot.clifter.Lifter(Robot.oi.xbox.getRawAxis(5));
+		 Robot.clifter.Lifter(0.7);
 	}
 	protected boolean isFinished()
 	{

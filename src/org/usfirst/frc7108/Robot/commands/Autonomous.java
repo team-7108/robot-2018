@@ -44,7 +44,7 @@ public class Autonomous extends CommandGroup {
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
 			this.addSequential(new AutonomousDelay(0.5));
-			this.addSequential(new Lift());
+			this.addSequential(new AutonomousLift());
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new KutuBirak());
 			break;
@@ -63,7 +63,7 @@ public class Autonomous extends CommandGroup {
 		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new AutonomousTurnPID(-90));
 		 	this.addSequential(new AutonomousDelay(0.5));
-		 	this.addSequential(new Lift());
+		 	this.addSequential(new AutonomousLift());
 		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new KutuBirak());
 		 	break;
@@ -80,7 +80,7 @@ public class Autonomous extends CommandGroup {
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
 			this.addSequential(new AutonomousDelay(0.5));
-			this.addSequential(new Lift());
+			this.addSequential(new AutonomousLift());
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new KutuBirak());
 		}
