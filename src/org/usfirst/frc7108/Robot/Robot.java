@@ -134,7 +134,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
 		Scheduler.getInstance().removeAll();
-		autoCG.addSequential(new soldanBasla());
+		autoCG.addSequential(new Autonomous());
 		autoCG.start();
 		/*switch ((AutoMode)autoChooser.getSelected()) {
 		
@@ -142,7 +142,7 @@ public class Robot extends TimedRobot {
 			
 			break;
 		case RIGHT:
-			
+			 
 			break;
 		case LEFT:
 			
