@@ -20,48 +20,69 @@ public class Autonomous extends CommandGroup {
 		{
 		
 		case "LL":
+			//Only passes the line.
 			this.addSequential(new AutonomusDrive(350));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomousTurnPID(90));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
-			this.addSequential(new AutonomousTurnPID(-90));
+			this.addSequential(new AutonomousDelay(0.5));
+			this.addSequential(new AutonomousTurnPID(0));
+			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
 			break;
 		
 		case "RR":
+			//Places box in to the scale also passes the line
 			this.addSequential(new AutonomusDrive(350));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomousTurnPID(90));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
-			this.addSequential(new AutonomousTurnPID(-90));
+			this.addSequential(new AutonomousDelay(0.5));
+			this.addSequential(new AutonomousTurnPID(0));
+			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
+			this.addSequential(new AutonomousDelay(0.5));
+			this.addSequential(new Lift());
+			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new KutuBirak());
 			break;
 		
-		case "RL":	 
+		case "RL":
+			//Places box in to the switch also passes the line
 		 	this.addSequential(new AutonomusDrive(350));
 		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new AutonomousTurnPID(90));
 		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new AutonomusDrive(200));
-		 	this.addSequential(new AutonomousTurnPID(-90));
+		 	this.addSequential(new AutonomousDelay(0.5));
+		 	this.addSequential(new AutonomousTurnPID(0));
+		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new AutonomusDrive(200));
+		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new AutonomousTurnPID(-90));
+		 	this.addSequential(new AutonomousDelay(0.5));
+		 	this.addSequential(new Lift());
+		 	this.addSequential(new AutonomousDelay(0.5));
 		 	this.addSequential(new KutuBirak());
 		 	break;
 		 	
 		case "LR":
+			//Places box in to the scale also passes the line
 			this.addSequential(new AutonomusDrive(350));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomousTurnPID(90));
 			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
-			this.addSequential(new AutonomousTurnPID(-90));
+			this.addSequential(new AutonomousDelay(0.5));
+			this.addSequential(new AutonomousTurnPID(0));
+			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new AutonomusDrive(200));
+			this.addSequential(new AutonomousDelay(0.5));
+			this.addSequential(new Lift());
+			this.addSequential(new AutonomousDelay(0.5));
 			this.addSequential(new KutuBirak());
-			break;
 		}
 	}
 	
