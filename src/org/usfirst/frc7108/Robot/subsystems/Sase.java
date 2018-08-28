@@ -73,6 +73,17 @@ public class Sase extends Subsystem {
      		sagArkaTalon.set(speed);
      		
      	}
+     	public void otonomSagMotor(double speed) {
+
+     		sagOnTalon.set(speed);
+     		sagArkaTalon.set(speed);
+     		
+     	}
+     	public void otonomSolMotor(double speed) {
+     		solOnTalon.set(-speed);
+     		solArkaTalon.set(-speed);
+     	}
+     	
      	public void otonomDur() {
      		solOnTalon.set(0);
      		sagOnTalon.set(0);
