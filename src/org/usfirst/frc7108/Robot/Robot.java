@@ -233,11 +233,11 @@ public class Robot extends TimedRobot {
         	counter.reset();
         	
         	//////////////////////////////////////////////////////////
-        	//int ult1 = (int) Ultrasonic.ultrasonic1();
-        	//int ult2 = (int) Ultrasonic.ultrasonic2();
+        	int ult1 = (int) Ultrasonic.ultrasonic1();
+        	int ult2 = (int) Ultrasonic.ultrasonic2();
         	//
-        	//table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
-            //table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
+        	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
+            table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
         	//////////////////////////////////////////////////////////
         
         //System.out.println("Joystickten okunan veri");
