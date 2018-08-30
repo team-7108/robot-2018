@@ -138,54 +138,16 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
 		Scheduler.getInstance().removeAll();
-	autoCG.addSequential(new soldanBasla());
-		autoCG.start();
-		/*switch ((AutoMode)autoChooser.getSelected()) {
-		
-		case CENTER_SCALE:
-			
-			break;
-		case RIGHT:
-			
-			break;
-		case LEFT:
-			
-			break;
-		case RIGHT_NO_SCALE:
-			
-			break;
-		case RIGHT_NO_SWITCH:
-			
-			break;
-		case LEFT_NO_SCALE:
-			
-			break;
-		case LEFT_NO_SWITCH:
-			
-		default: // Center Switch
-			
-		
-		*/
-		
-    
+		// autoCG.addSequential(new soldanBasla());
+		// autoCG.start();
     
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		int station = DriverStation.getInstance().getLocation();
 	
+
 		switch (station)  {
-	        case 0:
-	        	switch (gameData.substring(0, 2)) {
-	        	case "LR":
-	        		break;
-	        	case "RL":
-	        		break;
-	        	case "LL":
-	        		break;
-	        	case "RR":
-	        		break;
-	        	}
-	        	break;
+		// Left
 	        case 1:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
@@ -198,7 +160,22 @@ public class Robot extends TimedRobot {
 	        		break;
 	        	}
 	        	break;
+	        	
+        	// Mid
 	        case 2:
+	        	switch (gameData.substring(0, 2)) {
+	        	case "LR":
+	        		break;
+	        	case "RL":
+	        		break;
+	        	case "LL":
+	        		break;
+	        	case "RR":
+	        		break;
+	        	}
+	        	break;
+	        // Right
+	        case 3:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
 	        		break;
