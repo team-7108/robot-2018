@@ -26,8 +26,8 @@ public class AutonomousDrivePID extends Command {
       double angle_oldError=angle_error;
       int true_flag = 0;
       double accuracy = 3;
-      double p=0;
-      double d=0;
+      double p=0.0019;
+      double d=0.040;
     public AutonomousDrivePID(double _distance ) {
     	requires(Robot.sase);
     //	requires(Robot.sonAV);
