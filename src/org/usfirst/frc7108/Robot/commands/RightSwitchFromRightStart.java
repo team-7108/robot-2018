@@ -26,3 +26,4 @@ public class RightSwitchFromRightStart extends CommandGroup {
 		
 
 }
+}
