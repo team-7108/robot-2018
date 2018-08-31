@@ -35,8 +35,10 @@ import org.usfirst.frc7108.Robot.commands.AutonomousDrive;
 import org.usfirst.frc7108.Robot.commands.LeftScaleFromLeftStart;
 import org.usfirst.frc7108.Robot.commands.LeftScaleFromRightStart;
 import org.usfirst.frc7108.Robot.commands.LeftSwitchFromLeftStart;
+import org.usfirst.frc7108.Robot.commands.LeftSwitchFromMiddleStart;
 import org.usfirst.frc7108.Robot.commands.RightScaleFromLeftStart;
 import org.usfirst.frc7108.Robot.commands.RightScaleFromRightStart;
+import org.usfirst.frc7108.Robot.commands.RightSwitchFromMiddleStart;
 import org.usfirst.frc7108.Robot.commands.RightSwitchFromRightStart;
 //import org.usfirst.frc7108.Robot.commands.soldanBasla;
 import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
@@ -169,12 +171,16 @@ public class Robot extends TimedRobot {
 	        case 2:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
+	        		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RL":
+	        		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	case "LL":
+	        		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RR":
+	        		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	}
 	        	break;
