@@ -31,6 +31,9 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.usfirst.frc7108.Robot.commands.AutoMode;
 import org.usfirst.frc7108.Robot.commands.Autonomous;
 import org.usfirst.frc7108.Robot.commands.AutonomousDrive;
+import org.usfirst.frc7108.Robot.commands.LeftScaleFromLeftStart;
+import org.usfirst.frc7108.Robot.commands.LeftSwitchFromLeftStart;
+import org.usfirst.frc7108.Robot.commands.RightScaleFromLeftStart;
 //import org.usfirst.frc7108.Robot.commands.soldanBasla;
 import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
 import org.usfirst.frc7108.Robot.sensors.mpuGyro;
@@ -134,47 +137,63 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
 		Scheduler.getInstance().removeAll();
-		//autoCG.addSequential(new soldanBasla());
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		int station = DriverStation.getInstance().getLocation();
+	
+
+		switch (station)  {
+		// Left
+	        case 1:
+	        	switch (gameData.substring(0, 2)) {
+	        	case "LR":
+	        		autoCG.addSequential(new LeftSwitchFromLeftStart());
+	        		break;
+	        	case "RL":
+	        		autoCG.addSequential(new LeftScaleFromLeftStart());
+	        		break;
+	        	case "LL":
+	        		autoCG.addSequential(new LeftScaleFromLeftStart());
+	        		break;
+	        	case "RR":
+	        		autoCG.addSequential(new RightScaleFromLeftStart());
+	        		break;
+	        	}
+	        	break;
+	        	
+        	// Mid
+	        case 2:
+	        	switch (gameData.substring(0, 2)) {
+	        	case "LR":
+	        		break;
+	        	case "RL":
+	        		break;
+	        	case "LL":
+	        		break;
+	        	case "RR":
+	        		break;
+	        	}
+	        	break;
+	        // Right
+	        case 3:
+	        	switch (gameData.substring(0, 2)) {
+	        	case "LR":
+	        		autoCG.addSequential(new RightScaleFromRightStart());
+	        		break;
+	        	case "RL":
+	        		autoCG.addSequential(new RightSwitchFromRightStart());
+	        		break;
+	        	case "LL":
+	        		autoCG.addSequential(new LeftScaleFromRightStart());
+	        		break;
+	        	case "RR":
+	        		autoCG.addSequential(new RightScaleFromRightStart());
+	        		break;
+	        	}
+	        	break;
+	        }
 		autoCG.start();
-		/*switch ((AutoMode)autoChooser.getSelected()) {
-		
-		case CENTER_SCALE:
-			
-			break;
-		case RIGHT:
-			
-			break;
-		case LEFT:
-			
-			break;
-		case RIGHT_NO_SCALE:
-			
-			break;
-		case RIGHT_NO_SWITCH:
-			
-			break;
-		case LEFT_NO_SCALE:
-			
-			break;
-		case LEFT_NO_SWITCH:
-			
-		default: // Center Switch
-			
-		
-		*/}
-		
-
-/*    	
-        autonomousCommand = chooser.getSelected();
-        if (autonomousCommand != null) autonomousCommand.start();
-*/
-    	
-    
-    	
-
-    /**
-     * This function is called periodically during autonomous
-     */
+ }
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
