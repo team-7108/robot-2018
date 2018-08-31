@@ -18,7 +18,7 @@ public class RightScaleFromRightStart extends CommandGroup
 	this.addSequential(new AutonomousDelay(0.1));
 	this.addSequential(new AutonomusDrive(200));
 	this.addSequential(new AutonomousDelay(0.1));
-	this.addSequential(new AutonomousLift());
+	this.addSequential(new AutonomousLiftLS());
 	this.addSequential(new AutonomousDelay(0.1));
 	this.addSequential(new KutuBirak());
 	

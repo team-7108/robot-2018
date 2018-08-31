@@ -36,7 +36,7 @@ public class AutonomousLift extends Command{
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.sase.clifterDur();
+    	Robot.clifter.Stop();
 
     }
 
