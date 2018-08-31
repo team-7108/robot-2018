@@ -23,7 +23,6 @@ public class RightSwitchFromRightStart extends CommandGroup {
  	this.addSequential(new AutonomousDelay(0.1));
  	this.addSequential(new KutuBirak());
  
-		System.out.println("mal ensar");
-	}
+		
 
 }
