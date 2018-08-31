@@ -32,9 +32,10 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.usfirst.frc7108.Robot.commands.AutoMode;
 import org.usfirst.frc7108.Robot.commands.Autonomous;
 import org.usfirst.frc7108.Robot.commands.AutonomusDrive;
+import org.usfirst.frc7108.Robot.commands.LeftScaleFromRightStart;
 import org.usfirst.frc7108.Robot.commands.RightScaleFromRightStart;
 import org.usfirst.frc7108.Robot.commands.RightSwitchFromRightStart;
-import org.usfirst.frc7108.Robot.commands.soldanBasla;
+//import org.usfirst.frc7108.Robot.commands.soldanBasla;
 import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
 import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 //import org.usfirst.frc7108.Robot.commands.*;
@@ -186,6 +187,7 @@ public class Robot extends TimedRobot {
 	        		autoCG.addSequential(new RightSwitchFromRightStart());
 	        		break;
 	        	case "LL":
+	        		autoCG.addSequential(new LeftScaleFromRightStart());
 	        		break;
 	        	case "RR":
 	        		autoCG.addSequential(new RightScaleFromRightStart());
