@@ -6,6 +6,7 @@ public class RightSwitchFromRightStart extends CommandGroup {
 	
 	public RightSwitchFromRightStart()
 	{
+		
 	this.addSequential(new AutonomusDrive(350));
  	this.addSequential(new AutonomousDelay(0.1));
  	this.addSequential(new AutonomousTurnPID(90));
@@ -21,6 +22,8 @@ public class RightSwitchFromRightStart extends CommandGroup {
  	this.addSequential(new AutonomousLift());
  	this.addSequential(new AutonomousDelay(0.1));
  	this.addSequential(new KutuBirak());
+ 
+		System.out.println("mal ensar");
 	}
 
 }

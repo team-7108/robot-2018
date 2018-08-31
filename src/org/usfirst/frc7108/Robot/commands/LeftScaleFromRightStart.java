@@ -6,6 +6,7 @@ public class LeftScaleFromRightStart extends CommandGroup {
 	
 	public LeftScaleFromRightStart()
 	{
+		
 	this.addSequential(new AutonomusDrive(350));
 	this.addSequential(new AutonomousDelay(0.1));
 	this.addSequential(new AutonomousTurnPID(90));
@@ -22,6 +23,9 @@ public class LeftScaleFromRightStart extends CommandGroup {
 	this.addSequential(new AutonomousTurnPID(0));
 	this.addSequential(new AutonomousLift());
 	this.addSequential(new KutuBirak());
+	System.out.println("mal ensar");
 	}
 	
+	
 }
+
