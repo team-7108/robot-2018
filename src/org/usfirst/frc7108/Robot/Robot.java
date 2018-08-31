@@ -207,7 +207,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        // ultrasonic.ultrasonic1();
+         ultrasonic.ultrasonic1();
         // ultrasonic.ultrasonic2();
         
     }
