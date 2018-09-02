@@ -12,27 +12,27 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousDrivePID extends Command {
       double power;
       double distance;
-      double distancee= Robot.sonAV;
+      double distancee;
       double distance_error=distance-distancee;
       double distance_oldError=distance_error;
-      double kP = 0.0018;
-      double kD = 0.040;
+      double kP = 0.0014;
+      double kD = 0.050;
       double angle_power;
       double right_power;
       double left_power;
-      double yawAngle =0;
-      double angle= Robot.gyro.getAngle(); 
+      double yawAngle= Robot.gyro.getAngle(); 
+      double angle = 0;
       double angle_error= angle-yawAngle;
       double angle_oldError=angle_error;
       int true_flag = 0;
       double accuracy = 3;
-      double p=0.0019;
-      double d=0.040;
+      double p=0.02;
+      double d=0;
     public AutonomousDrivePID(double _distance ) {
     	requires(Robot.sase);
     //	requires(Robot.sonAV);
     	this.distance= _distance;
-    	
+    //	distancee=Robot.sonAV;
     }
 
     // Called just before this Command runs the first time
@@ -41,13 +41,15 @@ public class AutonomousDrivePID extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.gyro.updateGyro();
+    	distancee=Robot.sonAV;
+    	angle= Robot.gyro.getAngle();
+		angle_error = angle - yawAngle; 
     	
 
     	distance_error= distance-distancee;
+    	
     	angle_power = p*angle_error+(d*(angle_error-angle_oldError));
-			left_power=power+angle_power;
-			right_power=power-angle_power;
 		
 	
 		if (distance_error<0) {
@@ -57,6 +59,8 @@ public class AutonomousDrivePID extends Command {
 		else {
 			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
+		left_power = 0.4-angle_power;
+		right_power = 0.4+angle_power;
 		
 		if (left_power>1)
 		{left_power=1;}
@@ -69,8 +73,10 @@ public class AutonomousDrivePID extends Command {
 		Robot.sase.otonomSolMotor(left_power);
 		Robot.sase.otonomSagMotor(right_power);
 		//Robot.sase.otonomDuz(power);
+		//Robot.sase.otonomSolMotor(0.4);
+		//Robot.sase.otonomSagMotor(0.4);
 		System.out.println("Measured Distance:");
-		System.out.print(distance+ "		");
+		System.out.print(distancee+ "		");
 		System.out.print("Error Distance");
 		System.out.print(distance_error+ "		");
 		System.out.print("Measured Angle:");

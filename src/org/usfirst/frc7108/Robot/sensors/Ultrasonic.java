@@ -16,7 +16,6 @@ public class Ultrasonic {
     	double averageVolts = Robot.UAna.getAverageVoltage();
 		double AV = averageVolts*1000;
 		Robot.sonAV = (int) (AV/4.9);
-		
 		System.out.println(Robot.sonAV);
 		
     }
