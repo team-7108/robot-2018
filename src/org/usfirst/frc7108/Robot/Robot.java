@@ -12,8 +12,6 @@
 package org.usfirst.frc7108.Robot;
 
 import org.usfirst.frc7108.Robot.commands.Autonomous;
-import org.usfirst.frc7108.Robot.commands.LeftSwitchFromMiddleStart;
-import org.usfirst.frc7108.Robot.commands.RightSwitchFromMiddleStart;
 import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
 import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 //import org.usfirst.frc7108.Robot.commands.*;
@@ -164,16 +162,12 @@ public class Robot extends TimedRobot {
 	        case 2:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
-	        		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RL":
-	        		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	case "LL":
-	        		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RR":
-	        		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	}
 	        	break;
