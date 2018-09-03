@@ -8,13 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class soldanBasla extends CommandGroup{
 	public soldanBasla(){
 		requires(Robot.sase);
-		// this.addSequential(new AutonomusDrive(350));
-		// this.addSequential(new AutonomousDelay(0.5));
-		this.addSequential(new AutonomousTurnPID(-180));
-		// this.addSequential(new AutonomousDelay(0.5));
-		// this.addSequential(new AutonomusDrive(200));
-		
-	
+		this.addSequential(new AutonomousDrivePID(300));
+		//this.addSequential(new AutonomousTurnPID(90));
 		
 	}
 }

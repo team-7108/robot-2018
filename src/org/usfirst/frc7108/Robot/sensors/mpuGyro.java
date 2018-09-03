@@ -10,7 +10,7 @@ public class mpuGyro {
     private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 		
 	public double getAngle () {
-		return angle;
+		return -angle;
     }
     
     public double getRotation() {

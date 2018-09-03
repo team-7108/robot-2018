@@ -11,6 +11,19 @@
 
 package org.usfirst.frc7108.Robot;
 
+import org.usfirst.frc7108.Robot.commands.Autonomous;
+import org.usfirst.frc7108.Robot.commands.soldanBasla;
+//import org.usfirst.frc7108.Robot.commands.LeftSwitchFromMiddleStart;
+//import org.usfirst.frc7108.Robot.commands.RightSwitchFromMiddleStart;
+import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
+import org.usfirst.frc7108.Robot.sensors.mpuGyro;
+//import org.usfirst.frc7108.Robot.commands.*;
+//import org.usfirst.frc7108.Robot.commands.AutonomusDrive;
+import org.usfirst.frc7108.Robot.subsystems.CLifter;
+import org.usfirst.frc7108.Robot.subsystems.KutuAlma;
+import org.usfirst.frc7108.Robot.subsystems.Pneumatic;
+import org.usfirst.frc7108.Robot.subsystems.Sase;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -22,23 +35,11 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 //import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-
-import org.usfirst.frc7108.Robot.commands.AutoMode;
-import org.usfirst.frc7108.Robot.commands.Autonomous;
-import org.usfirst.frc7108.Robot.commands.AutonomusDrive;
-import org.usfirst.frc7108.Robot.commands.soldanBasla;
-import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
-import org.usfirst.frc7108.Robot.sensors.mpuGyro;
-//import org.usfirst.frc7108.Robot.commands.*;
-//import org.usfirst.frc7108.Robot.commands.AutonomusDrive;
-import org.usfirst.frc7108.Robot.subsystems.*;
-import org.usfirst.frc7108.Robot.subsystems.KutuAlma;
 
 
 /**
@@ -140,7 +141,8 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().removeAll();
 		// autoCG.addSequential(new soldanBasla());
 		// autoCG.start();
-    
+		gyro.zeroGyro();
+		ultrasonic.ultrasonic1();
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		int station = DriverStation.getInstance().getLocation();
@@ -151,6 +153,7 @@ public class Robot extends TimedRobot {
 	        case 1:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
+	        		autoCG.addSequential(new soldanBasla());
 	        		break;
 	        	case "RL":
 	        		break;
@@ -165,12 +168,16 @@ public class Robot extends TimedRobot {
 	        case 2:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
+	      //  		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RL":
+	//        		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	case "LL":
+	  //      		autoCG.addSequential(new LeftSwitchFromMiddleStart());
 	        		break;
 	        	case "RR":
+	    //    		autoCG.addSequential(new RightSwitchFromMiddleStart());
 	        		break;
 	        	}
 	        	break;
@@ -188,6 +195,7 @@ public class Robot extends TimedRobot {
 	        	}
 	        	break;
 	        }
+		autoCG.start();
  }
 		
 

@@ -66,13 +66,24 @@ public class Sase extends Subsystem {
 	  robotDrive41.isSafetyEnabled();
 	 
      }
-     	public void otonomDuz() {
-     		solOnTalon.set(-.6);
-     		sagOnTalon.set(.6);
-     		solArkaTalon.set(-.6);
-     		sagArkaTalon.set(.6);
+     	public void otonomDuz(double speed) {
+     		solOnTalon.set(-speed);
+     		sagOnTalon.set(speed);
+     		solArkaTalon.set(-speed);
+     		sagArkaTalon.set(speed);
      		
      	}
+     	public void otonomSagMotor(double speed) {
+
+     		sagOnTalon.set(speed);
+     		sagArkaTalon.set(speed);
+     		
+     	}
+     	public void otonomSolMotor(double speed) {
+     		solOnTalon.set(-speed);
+     		solArkaTalon.set(-speed);
+     	}
+     	
      	public void otonomDur() {
      		solOnTalon.set(0);
      		sagOnTalon.set(0);
