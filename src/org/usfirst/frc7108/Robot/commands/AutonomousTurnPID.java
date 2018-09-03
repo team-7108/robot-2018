@@ -48,8 +48,9 @@ import edu.wpi.first.wpilibj.command.Command;
 		System.out.print(error);
 		System.out.print("Power: ");
 		System.out.println(power);
+		System.out.println("True Flag :    "+ true_flag);
 		error_old = error;
-		if(yawAngle < angle+1 && yawAngle > angle-1) {
+		if(yawAngle < angle+2 && yawAngle > angle-2) {
 			// System.out.println("Kedicik");
 			true_flag++;
 		}

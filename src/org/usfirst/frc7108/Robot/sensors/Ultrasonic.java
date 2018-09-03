@@ -19,9 +19,8 @@ public class Ultrasonic {
 		double AV = averageVolts*1000;
 		Robot.sonAV = (int) (AV/4.9);
 		
-		System.out.println(Robot.sonAV);
-		return Robot.sonAV;
 		
+		return Robot.sonAV;
     }
 	
 	public static double ultrasonic2() 
@@ -31,7 +30,7 @@ public class Ultrasonic {
 		double AV = averageVolts*1000;
 		Robot.sonAV2 = (int) (AV/4.9);
 		
-		System.out.println(Robot.sonAV2);
+		//System.out.println(Robot.sonAV2);
 		return Robot.sonAV2;
 		
     }
