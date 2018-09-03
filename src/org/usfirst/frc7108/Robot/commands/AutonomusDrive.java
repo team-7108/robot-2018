@@ -28,7 +28,7 @@ public class AutonomusDrive extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.sase.otonomDuz(.6);
+    	Robot.sase.otonomDuz();
     	
     	
      // may need to call getJoystick() method
