@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousDrivePID extends Command {
       double power;
       double distance;
-      double distancee;
+      double distancee= Robot.sonAV;
       double distance_error=distance-distancee;
       double distance_oldError=distance_error;
       double kP = 0.0014;
@@ -26,8 +26,8 @@ public class AutonomousDrivePID extends Command {
       double angle_oldError=angle_error;
       int true_flag = 0;
       double accuracy = 3;
-      double p=0.02;
-      double d=0;
+      double p=0.05;
+      double d=0.12;
     public AutonomousDrivePID(double _distance ) {
     	requires(Robot.sase);
     //	requires(Robot.sonAV);
@@ -42,7 +42,7 @@ public class AutonomousDrivePID extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gyro.updateGyro();
-    	distancee=Robot.sonAV;
+    	distancee=Robot.ultrasonic.ultrasonic1();
     	angle= Robot.gyro.getAngle();
 		angle_error = angle - yawAngle; 
     	
@@ -59,8 +59,8 @@ public class AutonomousDrivePID extends Command {
 		else {
 			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
-		left_power = 0.4-angle_power;
-		right_power = 0.4+angle_power;
+		left_power =power;
+		right_power =power;
 		
 		if (left_power>1)
 		{left_power=1;}
@@ -87,6 +87,7 @@ public class AutonomousDrivePID extends Command {
 		System.out.print(left_power + "		");
 		System.out.print("Right Power :"); 
 		System.out.print(right_power);
+		System.out.println("True Flag:       "+ true_flag);
 		     
 		     
 		     

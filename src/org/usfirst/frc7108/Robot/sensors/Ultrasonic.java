@@ -1,5 +1,7 @@
 package org.usfirst.frc7108.Robot.sensors;
 
+import javax.swing.plaf.FontUIResource;
+
 import org.usfirst.frc7108.Robot.Robot;
 
 public class Ultrasonic {
@@ -10,13 +12,14 @@ public class Ultrasonic {
 		
 		 
 	}
-	public void ultrasonic1() 
+	public double ultrasonic1() 
     {
     	
     	double averageVolts = Robot.UAna.getAverageVoltage();
 		double AV = averageVolts*1000;
 		Robot.sonAV = (int) (AV/4.9);
-		System.out.println(Robot.sonAV);
+		
+		return Robot.sonAV;
 		
     }
 	
