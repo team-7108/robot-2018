@@ -226,7 +226,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        ultrasonic.ultrasonic1();
+        ultrasonic.ultrasonic2();
         ultrasonic.ultrasonic2();
         xDeger= accel.getX();
         yDeger= accel.getY();
@@ -234,7 +234,7 @@ public class Robot extends TimedRobot {
 		//System.out.println(yDeger);
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
-	    System.out.println(yawAngle);
+        table.putNumber("Gyro", yawAngle);
         table.putNumber("X",x);
         x += 1;
         y = table.getNumber("Y", 0.0);
@@ -251,9 +251,22 @@ public class Robot extends TimedRobot {
     counter.reset();
     */
         if(counter.get()!=0) {
-        	System.out.println("limit switch basiliyor");
+        	boolean limitSwitchStatus = true;
+        	table.putBoolean("Limit Switch Status", limitSwitchStatus);
         	counter.reset();
-        }
+        }else {
+        	boolean limitSwitchStatus = false;
+        	table.putBoolean("Limit Switch Status", limitSwitchStatus);
+        	counter.reset();
+        	
+        	//////////////////////////////////////////////////////////
+        	int ult1 = (int) Ultrasonic.ultrasonic1();
+        	int ult2 = (int) Ultrasonic.ultrasonic2();
+        	//
+        	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
+            table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
+        	//////////////////////////////////////////////////////////
+        
         //System.out.println("Joystickten okunan veri");
         //System.out.println(oi.xbox.getRawAxis(5));
     }
@@ -263,5 +276,6 @@ public class Robot extends TimedRobot {
     	
     
     }
+}
 
 
