@@ -23,7 +23,7 @@ public class RightSwitchFromMiddleStart extends CommandGroup {
     	this.addSequential(new AutonomousDelay(0.1));
     	//this.addSequential(new AutonomousLift());
     	this.addSequential(new AutonomousDelay(0.1));
-    	this.addSequential(new KutuBirak());
+    	this.addSequential(new KutuBirak(3));
     	this.addSequential(new AutonomusDrive(-5));
     	this.addSequential(new AutonomousDelay(0.1));
     	this.addSequential(new AutonomousTurnPID(-90));
@@ -39,7 +39,7 @@ public class RightSwitchFromMiddleStart extends CommandGroup {
     	this.addSequential(new AutonomousDelay(0.1));
     	//this.addSequential(new AutonomousLift());
     	this.addSequential(new AutonomousDelay(0.1));
-    	this.addSequential(new KutuBirak());
+    	this.addSequential(new KutuBirak(3));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

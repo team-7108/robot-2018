@@ -21,7 +21,7 @@ public class RightSwitchFromRightStart extends CommandGroup {
  	this.addSequential(new AutonomousDelay(0.1));
  	this.addSequential(new AutonomousLift(3));
  	this.addSequential(new AutonomousDelay(0.1));
- 	this.addSequential(new KutuBirak());
+ 	this.addSequential(new KutuBirak(3));
  
 		
 

@@ -16,7 +16,7 @@ public class AutonomousDrivePID extends Command {
       double distance_error=distance-distancee;
       double distance_oldError=distance_error;
       double kP = 0.0014;
-      double kD = 0.050;
+      double kD = 0.04;
       double angle_power;
       double right_power;
       double left_power;

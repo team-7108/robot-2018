@@ -22,7 +22,7 @@ public class LeftScaleFromRightStart extends CommandGroup {
 	this.addSequential(new AutonomousDelay(0.1));
 	this.addSequential(new AutonomousTurnPID(0));
 	this.addSequential(new AutonomousLiftLS());
-	this.addSequential(new KutuBirak());
+	this.addSequential(new KutuBirak(3));
 	
 	}
 	

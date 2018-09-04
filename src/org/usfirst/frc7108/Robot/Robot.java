@@ -44,6 +44,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.usfirst.frc7108.Robot.commands.AutoMode;
 import org.usfirst.frc7108.Robot.commands.Autonomous;
 import org.usfirst.frc7108.Robot.commands.AutonomousDrive;
+import org.usfirst.frc7108.Robot.commands.AutonomousLift;
+import org.usfirst.frc7108.Robot.commands.AutonomousLiftLS;
 import org.usfirst.frc7108.Robot.commands.LeftScaleFromLeftStart;
 import org.usfirst.frc7108.Robot.commands.LeftScaleFromRightStart;
 import org.usfirst.frc7108.Robot.commands.LeftSwitchFromLeftStart;
@@ -171,6 +173,7 @@ public class Robot extends TimedRobot {
 	        		break;
 	        	case "RL":
 	        		autoCG.addSequential(new LeftScaleFromLeftStart());
+	        		//autoCG.addSequential(new AutonomousLift(3));
 	        		break;
 	        	case "LL":
 	        		autoCG.addSequential(new LeftScaleFromLeftStart());

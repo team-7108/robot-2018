@@ -13,12 +13,12 @@ public class AutonomousDrivee extends Command{
 
 	long startTime;
 	double seconds;
-	double mesafe;
+	//double mesafe;
 	boolean durum;
 	
-	public AutonomousDrivee(double _mesafe) {
-		this.mesafe = _mesafe;
-		//this.seconds = _seconds;		
+	public AutonomousDrivee(double _seconds) {
+		//this.mesafe = _mesafe;
+		this.seconds = _seconds;		
 		requires(Robot.sase);
 	}
 	protected void initialize() {
@@ -36,9 +36,9 @@ public class AutonomousDrivee extends Command{
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-		//return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
+		return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
     	
-    	return (Robot.sonAV > (int) this.mesafe);
+    	//return (Robot.sonAV > (int) this.mesafe);
     }
 
     // Called once after isFinished returns true

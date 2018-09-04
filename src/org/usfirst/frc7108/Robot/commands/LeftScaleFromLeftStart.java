@@ -7,13 +7,10 @@ import org.usfirst.frc7108.Robot.sensors.Ultrasonic;
 
 public class LeftScaleFromLeftStart extends CommandGroup{
 	public LeftScaleFromLeftStart() {
-		this.addSequential(new AutonomousDrive(500));
+		this.addSequential(new AutonomousDrivePID(500));
 		this.addSequential(new AutonomousTurnPID(30) , 2);
-		System.out.print("Son AV");
-		System.out.println(Robot.sonAV);	
-		this.addSequential(new AutonomousDrive(Robot.ultrasonic.ultrasonic1()+150));
-		System.out.println("Lifting");
+		this.addSequential(new AutonomousDrivee(2));		
 		this.addParallel(new AutonomousLift(3));
-		this.addSequential(new KutuBirak());
+		this.addSequential(new KutuBirak(3));
 }
 }

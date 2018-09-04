@@ -74,9 +74,9 @@ public class Sase extends Subsystem {
      		solArkaTalon.set(-speed);
      		sagArkaTalon.set(speed);
      		*/
-     		solOnTalon.set(-.6);
+     		solOnTalon.set(-.55);
      		sagOnTalon.set(.6);
-     		solArkaTalon.set(-.6);
+     		solArkaTalon.set(-.55);
      		sagArkaTalon.set(.6);
      		
      	}
@@ -89,6 +89,14 @@ public class Sase extends Subsystem {
      	public void otonomSolMotor(double speed) {
      		solOnTalon.set(-speed);
      		solArkaTalon.set(-speed);
+     	}
+     	public void otonomTers() {
+     		solOnTalon.set(.55);
+     		sagOnTalon.set(-.6);
+     		solArkaTalon.set(.55);
+     		sagArkaTalon.set(-.6);
+     		
+     		
      	}
      	
      	public void otonomDur() {

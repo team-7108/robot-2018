@@ -6,12 +6,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class LeftSwitchFromLeftStart extends CommandGroup{
 	public LeftSwitchFromLeftStart() {
-		this.addSequential(new AutonomousDrive(240));	
-		this.addSequential(new AutonomousTurnPID(20));
-		double help = Robot.sonAV + 300;
-		this.addSequential(new AutonomousDrive(help));
+		this.addSequential(new AutonomousDrivePID(400));	
+		this.addSequential(new AutonomousTurnPID(90));
+		this.addSequential(new AutonomousReverse(0.2));
 		this.addParallel(new AutonomousLift(3));
-		this.addSequential(new KutuBirak());
+		this.addSequential(new KutuBirak(3));
 	}
 
 }
