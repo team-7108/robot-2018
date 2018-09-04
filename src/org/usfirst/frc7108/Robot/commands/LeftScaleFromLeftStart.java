@@ -9,8 +9,8 @@ public class LeftScaleFromLeftStart extends CommandGroup{
 	public LeftScaleFromLeftStart() {
 		this.addSequential(new AutonomousDrivePID(500));
 		this.addSequential(new AutonomousTurnPID(30) , 2);
-		this.addSequential(new AutonomousDrivee(2));		
 		this.addParallel(new AutonomousLift(3));
+		this.addSequential(new AutonomousDrivee(1));		
 		this.addSequential(new KutuBirak(3));
 }
 }
