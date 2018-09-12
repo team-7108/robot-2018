@@ -11,7 +11,7 @@ public class RightSwitchFromRightStart extends CommandGroup {
 	this.addSequential(new AutonomousTurnPID(-90));
 	this.addSequential(new AutonomousReverse(0.2));
 	this.addSequential(new AutonomousLift(3));
-	this.addSequential(new KutuBirak(3));
+	this.addSequential(new AutonomousBoxRelease(3));
  
 		
 

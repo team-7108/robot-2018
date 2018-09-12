@@ -6,7 +6,6 @@ public class LeftScaleFromRightStart extends CommandGroup {
 	
 	public LeftScaleFromRightStart()
 	{
-		
 		this.addSequential(new AutonomousDrivePID(500));
 	}
 	

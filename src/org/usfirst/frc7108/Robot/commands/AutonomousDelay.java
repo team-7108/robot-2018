@@ -9,7 +9,7 @@ public class AutonomousDelay extends Command{
 	double seconds;
 	public AutonomousDelay(double _seconds){
 		this.seconds = _seconds;		
-		requires(Robot.sase);
+		requires(Robot.driveTrain);
 	}
 	protected void initialize() {
 		startTime = System.currentTimeMillis();
@@ -18,7 +18,7 @@ public class AutonomousDelay extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.sase.otonomDur();
+    	Robot.driveTrain.otonomDur();
     	
     	
      // may need to call getJoystick() method
@@ -32,7 +32,7 @@ public class AutonomousDelay extends Command{
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.sase.otonomDur();
+    	Robot.driveTrain.otonomDur();
 
     }
 

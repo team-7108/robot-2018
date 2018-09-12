@@ -5,7 +5,7 @@ import org.usfirst.frc7108.Robot.RobotMap;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class KutuAlma extends Subsystem {
+public class Grabber extends Subsystem {
 	 private final SpeedController grabberMotor1 = RobotMap.grabberKutuMotor1;
 	 private final SpeedController grabberMotor2 = RobotMap.grabberKutuMotor2;
 	
