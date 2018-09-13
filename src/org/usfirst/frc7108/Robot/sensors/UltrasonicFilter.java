@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class UltrasonicFilter{
 	private double smoothedValue = 0;
 	double filterValue = 0.6;
-	int sensorRead = Robot.sonAV;
+	int sensorRead = Robot.lastAnalogValue;
 		
 		public double getSmoothVal() {
 			if (filterValue >1) {
@@ -16,7 +16,7 @@ public class UltrasonicFilter{
 				filterValue = 0;
 			}
 			
-			smoothedValue = (Robot.sonAV*(1 - filterValue)+(smoothedValue*filterValue));
+			smoothedValue = (Robot.lastAnalogValue*(1 - filterValue)+(smoothedValue*filterValue));
 			
 			
 			

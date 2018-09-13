@@ -10,7 +10,7 @@ public class AutonomousTurn extends Command{
 	double seconds = 1;
 	double speed;
 	public AutonomousTurn(double _speed){
-		requires(Robot.sase);
+		requires(Robot.driveTrain);
 		this.speed = _speed;
 	}
 	protected void initialize() {
@@ -20,7 +20,7 @@ public class AutonomousTurn extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.sase.otonomDon(this.speed);//+ verirsen saga - verirsen sola doner
+    	Robot.driveTrain.autonomousStop(this.speed);//+ verirsen saga - verirsen sola doner
     	
     	
      // may need to call getJoystick() method
@@ -34,7 +34,7 @@ public class AutonomousTurn extends Command{
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.sase.otonomDur();
+    	Robot.driveTrain.autonomousStop();
 
     }
 

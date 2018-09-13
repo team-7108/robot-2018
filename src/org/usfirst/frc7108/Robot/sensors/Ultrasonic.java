@@ -17,10 +17,10 @@ public class Ultrasonic {
     	
     	double averageVolts = Robot.UAna.getAverageVoltage();
 		double AV = averageVolts*1000;
-		Robot.sonAV = (int) (AV/4.9);
+		Robot.lastAnalogValue = (int) (AV/4.9);
 		
 		
-		return Robot.sonAV;
+		return Robot.lastAnalogValue;
     }
 	
 	public static double ultrasonic2() 
@@ -28,10 +28,10 @@ public class Ultrasonic {
     	
     	double averageVolts = Robot.UAna2.getAverageVoltage();
 		double AV = averageVolts*1000;
-		Robot.sonAV2 = (int) (AV/4.9);
+		Robot.lastAnalogValue2 = (int) (AV/4.9);
 		
-		//System.out.println(Robot.sonAV2);
-		return Robot.sonAV2;
+		//System.out.println(Robot.lastAnalogValue2);
+		return Robot.lastAnalogValue2;
 		
     }
 }

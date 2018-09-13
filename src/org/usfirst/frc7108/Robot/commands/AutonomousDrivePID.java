@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousDrivePID extends Command {
       double power;
       double distance;
-      double distancee= Robot.sonAV;
-      double distance_error=distance-distancee;
+      double current_distance= Robot.lastAnalogValue;
+      double distance_error=distance-current_distance;
       double distance_oldError=distance_error;
       double kP = 0.0014;
       double kD = 0.04;
@@ -29,10 +29,10 @@ public class AutonomousDrivePID extends Command {
       double p=0.05;
       double d=0.12;
     public AutonomousDrivePID(double _distance ) {
-    	requires(Robot.sase);
-    //	requires(Robot.sonAV);
+    	requires(Robot.driveTrain);
+    //	requires(Robot.lastAnalogValue);
     	this.distance= _distance;
-    //	distancee=Robot.sonAV;
+    //	current_distance=Robot.lastAnalogValue;
     }
 
     // Called just before this Command runs the first time
@@ -42,12 +42,12 @@ public class AutonomousDrivePID extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gyro.updateGyro();
-    	distancee=Robot.ultrasonic.ultrasonic1();
+    	current_distance=Robot.ultrasonic.ultrasonic1();
     	angle= Robot.gyro.getAngle();
 		angle_error = angle - yawAngle; 
     	
 
-    	distance_error= distance-distancee;
+    	distance_error= distance-current_distance;
     	
     	angle_power = p*angle_error+(d*(angle_error-angle_oldError));
 		
@@ -70,13 +70,13 @@ public class AutonomousDrivePID extends Command {
 		{right_power=1;}
 		else if(right_power < -1)
 		{right_power=-1;}
-		Robot.sase.otonomSolMotor(left_power);
-		Robot.sase.otonomSagMotor(right_power);
-		//Robot.sase.otonomDuz(power);
-		//Robot.sase.otonomSolMotor(0.4);
-		//Robot.sase.otonomSagMotor(0.4);
+		Robot.driveTrain.autonomousLeftMotor(left_power);
+		Robot.driveTrain.autonomousRightMotor(right_power);
+		//Robot.driveTrain.autonomousForward(power);
+		//Robot.driveTrain.autonomousLeftMotor(0.4);
+		//Robot.driveTrain.autonomousRightMotor(0.4);
 		System.out.println("Measured Distance:");
-		System.out.print(distancee+ "		");
+		System.out.print(current_distance+ "		");
 		System.out.print("Error Distance");
 		System.out.print(distance_error+ "		");
 		System.out.print("Measured Angle:");
@@ -92,7 +92,7 @@ public class AutonomousDrivePID extends Command {
 		     
 		     
 		     distance_oldError= distance_error;
-	if(distancee< distance+ accuracy && distancee > distance-accuracy) {
+	if(current_distance< distance+ accuracy && current_distance > distance-accuracy) {
 		System.out.println("arizona kertenkelecik");
 		true_flag++;
 		
@@ -124,7 +124,7 @@ public class AutonomousDrivePID extends Command {
 }
 
     // Called once after isFinished returns true
-    protected void end() {Robot.sase.otonomDur();
+    protected void end() {Robot.driveTrain.autonomousStop();
     }
 
     // Called when another command which requires one or more of the same

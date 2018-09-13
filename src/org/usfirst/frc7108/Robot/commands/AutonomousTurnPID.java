@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		double accuracy = 1;
 		
 	public AutonomousTurnPID(double _angle) {
-		requires(Robot.sase);	
+		requires(Robot.driveTrain);	
 		this.angle = _angle;			
 	}
 	
@@ -41,7 +41,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		else if(power < -1) {
 			power = -1;
 		}
-		Robot.sase.otonomDon(-power);
+		Robot.driveTrain.autonomousStop(-power);
 		System.out.print("Measured: ");
 		System.out.print(yawAngle);
 		System.out.print("Error: ");
@@ -71,7 +71,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		
 	}
 	protected void end() {
-		Robot.sase.otonomDur();
+		Robot.driveTrain.autonomousStop();
 	}
 }
 	
