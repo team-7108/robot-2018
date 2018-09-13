@@ -14,12 +14,12 @@ public class AutonomousReverse extends Command{
 	long startTime;
 	double seconds;
 	//double mesafe;
-	boolean status;
+	boolean durum;
 	
 	public AutonomousReverse(double _seconds) {
 		//this.mesafe = _mesafe;
 		this.seconds = _seconds;		
-		requires(Robot.driveTrain);
+		requires(Robot.sase);
 	}
 	protected void initialize() {
 		startTime = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class AutonomousReverse extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.otonomTers();
+    	Robot.sase.otonomTers();
     	
     	
      // may need to call getJoystick() method
@@ -44,7 +44,7 @@ public class AutonomousReverse extends Command{
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.driveTrain.otonomDur();
+    	Robot.sase.otonomDur();
 
     }
 

@@ -19,7 +19,7 @@ public class AutonomousDrive extends Command{
 	public AutonomousDrive(double _mesafe) {
 		this.mesafe = _mesafe;
 		//this.seconds = _seconds;		
-		requires(Robot.driveTrain);
+		requires(Robot.sase);
 	}
 	protected void initialize() {
 		startTime = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class AutonomousDrive extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.otonomDuz();
+    	Robot.sase.otonomDuz();
     	
     	
      // may need to call getJoystick() method
@@ -38,13 +38,13 @@ public class AutonomousDrive extends Command{
     protected boolean isFinished() {
 		//return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
     	
-    	return (Robot.lastAV > (int) this.mesafe);
+    	return (Robot.sonAV > (int) this.mesafe);
     }
 
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.driveTrain.otonomDur();
+    	Robot.sase.otonomDur();
 
     }
 

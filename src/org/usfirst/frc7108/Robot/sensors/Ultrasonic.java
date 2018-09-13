@@ -17,10 +17,10 @@ public class Ultrasonic {
     	
     	double averageVolts = Robot.UAna.getAverageVoltage();
 		double AV = averageVolts*1000;
-		Robot.lastAV = (int) (AV/4.9);
+		Robot.sonAV = (int) (AV/4.9);
 		
 		
-		return Robot.lastAV;
+		return Robot.sonAV;
     }
 	
 	public static double ultrasonic2() 

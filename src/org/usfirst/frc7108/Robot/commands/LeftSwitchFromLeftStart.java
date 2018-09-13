@@ -10,7 +10,7 @@ public class LeftSwitchFromLeftStart extends CommandGroup{
 		this.addSequential(new AutonomousTurnPID(90));
 		this.addSequential(new AutonomousReverse(0.2));
 		this.addParallel(new AutonomousLift(3));
-		this.addSequential(new AutonomousBoxRelease(3));
+		this.addSequential(new KutuBirak(3));
 	}
 
 }

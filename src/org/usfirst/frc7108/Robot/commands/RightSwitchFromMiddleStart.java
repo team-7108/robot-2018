@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSwitchFromMiddleStart extends CommandGroup {
 
     public RightSwitchFromMiddleStart() {
-    	requires(Robot.driveTrain);
+    	requires(Robot.sase);
     	this.addSequential(new AutonomousDrivePID(150));
     	this.addSequential(new AutonomousTurnPID(30));
-    	this.addSequential(new AutonomousDrive(1));
+    	this.addSequential(new AutonomousDrivee(1));
     	this.addSequential(new AutonomousDelay(0.5));
     	this.addSequential(new AutonomousTurnPID(0));
     	this.addParallel(new AutonomousLift(3));
-    	this.addSequential(new AutonomousDrive(1));
-    	this.addSequential(new AutonomousBoxRelease(3));
+    	this.addSequential(new AutonomousDrivee(1));
+    	this.addSequential(new KutuBirak(3));
     }
 }
