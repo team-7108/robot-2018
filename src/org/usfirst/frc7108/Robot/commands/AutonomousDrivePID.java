@@ -29,7 +29,7 @@ public class AutonomousDrivePID extends Command {
       double p=0.05;
       double d=0.12;
     public AutonomousDrivePID(double _distance ) {
-    	requires(Robot.sase);
+    	requires(Robot.driveTrain);
     //	requires(Robot.sonAV);
     	this.distance= _distance;
     //	distancee=Robot.sonAV;
@@ -70,11 +70,11 @@ public class AutonomousDrivePID extends Command {
 		{right_power=1;}
 		else if(right_power < -1)
 		{right_power=-1;}
-		Robot.sase.otonomSolMotor(left_power);
-		Robot.sase.otonomSagMotor(right_power);
-		//Robot.sase.otonomDuz(power);
-		//Robot.sase.otonomSolMotor(0.4);
-		//Robot.sase.otonomSagMotor(0.4);
+		Robot.driveTrain.autonomousLeftMotor(left_power);
+		Robot.driveTrain.autonomousRightMotor(right_power);
+		//Robot.driveTrain.autonomousForward(power);
+		//Robot.driveTrain.autonomousLeftMotor(0.4);
+		//Robot.driveTrain.autonomousRightMotor(0.4);
 		System.out.println("Measured Distance:");
 		System.out.print(distancee+ "		");
 		System.out.print("Error Distance");
@@ -124,7 +124,7 @@ public class AutonomousDrivePID extends Command {
 }
 
     // Called once after isFinished returns true
-    protected void end() {Robot.sase.otonomDur();
+    protected void end() {Robot.driveTrain.autonomousStop();
     }
 
     // Called when another command which requires one or more of the same

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSwitchFromMiddleStart extends CommandGroup {
 
     public RightSwitchFromMiddleStart() {
-    	requires(Robot.sase);
+    	requires(Robot.driveTrain);
     	this.addSequential(new AutonomousDrivePID(150));
     	this.addSequential(new AutonomousTurnPID(30));
     	this.addSequential(new AutonomousDrivee(1));
