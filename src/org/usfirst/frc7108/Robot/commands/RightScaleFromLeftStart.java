@@ -10,7 +10,7 @@ public class RightScaleFromLeftStart extends CommandGroup{
 		//this.addSequential(new AutonomousTurnPID(-90));
 		//this.addSequential(new AutonomousDrive());
 		//this.addParallel(new AutonomousLiftLS());
-		//.addSequential(new KutuBirak(3));
+		//.addSequential(new releaseCube(3));
 	}
 
 }

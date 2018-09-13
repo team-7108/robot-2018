@@ -38,7 +38,7 @@ public class AutonomousDrive extends Command{
     protected boolean isFinished() {
 		//return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
     	
-    	return (Robot.sonAV > (int) this.mesafe);
+    	return (Robot.lastAnalogValue > (int) this.mesafe);
     }
 
     // Called once after isFinished returns true

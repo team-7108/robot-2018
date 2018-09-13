@@ -37,8 +37,8 @@ public class RobotMap {
     public static RobotDrive driveTrainRobotDrive41;
 
     
-    public static SpeedController grabberKutuMotor1;
-    public static SpeedController grabberKutuMotor2;
+    public static SpeedController gripperKutuMotor1;
+    public static SpeedController gripperKutuMotor2;
     
     public static WPI_TalonSRX lifterMotor1;
     public static WPI_TalonSRX lifterMotor2;
@@ -61,11 +61,11 @@ public class RobotMap {
         driveTrainrightRearTalon = new WPI_TalonSRX(14);
         driveTrainrightRearTalon.setInverted(true);
         
-        grabberKutuMotor1 = new Spark(0);
-        grabberKutuMotor2 = new Spark(2);
+        gripperKutuMotor1 = new Spark(0);
+        gripperKutuMotor2 = new Spark(2);
         
-        grabberKutuMotor1.setInverted(false);
-        grabberKutuMotor2.setInverted(false);
+        gripperKutuMotor1.setInverted(false);
+        gripperKutuMotor2.setInverted(false);
         
         lifterMotor1 = new WPI_TalonSRX(12);
         lifterMotor2 = new WPI_TalonSRX(16);

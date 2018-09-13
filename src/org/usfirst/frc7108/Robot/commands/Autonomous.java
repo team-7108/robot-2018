@@ -1,6 +1,6 @@
 package org.usfirst.frc7108.Robot.commands;
 
-import org.usfirst.frc7108.Robot.subsystems.KutuAlma;
+import org.usfirst.frc7108.Robot.subsystems.Gripper;
 import org.usfirst.frc7108.Robot.subsystems.DriveTrain;
 import org.usfirst.frc7108.Robot.subsystems.CLifter;
 import edu.wpi.first.wpilibj.command.CommandGroup;
