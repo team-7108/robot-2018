@@ -26,6 +26,7 @@
   <property file="${user.home}/wpilib/java/${version}/ant/build.properties"/>
 
   <import file="${wpilib.ant.dir}/build.xml"/>
-	 <!--import file="$C:/Usersmars/eclipse-workspace/Robot/build.xml"/-->	
+	 <!--import file="$C:/Usersmars/eclipse-workspace/Robot/build.xml"/-->
+ <target name="test" depends="clean,compile" description="Compile source code and run all junit tests."/>
 
 </project>
