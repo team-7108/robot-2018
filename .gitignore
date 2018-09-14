@@ -25,3 +25,6 @@ bin/
 build/
 dist/
 .metadata/
+
+#Do not ignore the lib folder
+!wpilib/**/*
