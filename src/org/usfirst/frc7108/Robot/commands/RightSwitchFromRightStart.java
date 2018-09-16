@@ -2,7 +2,8 @@ package org.usfirst.frc7108.Robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class RightSwitchFromRightStart extends CommandGroup {
+public class RightSwitchFromRightStart extends CommandGroup 
+{
 	
 	public RightSwitchFromRightStart()
 	{
@@ -13,7 +14,5 @@ public class RightSwitchFromRightStart extends CommandGroup {
 	this.addSequential(new AutonomousLift(3));
 	this.addSequential(new releaseCube(3));
  
-		
-
-}
+	}
 }

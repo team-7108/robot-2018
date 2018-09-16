@@ -4,13 +4,13 @@ import javax.swing.plaf.FontUIResource;
 
 import org.usfirst.frc7108.Robot.Robot;
 
-public class Ultrasonic {
+public class Ultrasonic 
+{
 	
 	
-	public Ultrasonic() {
-		
-		
-		 
+	public Ultrasonic() 
+	{
+			 
 	}
 	public static double ultrasonic1() 
     {
@@ -18,7 +18,6 @@ public class Ultrasonic {
     	double averageVolts = Robot.UAna.getAverageVoltage();
 		double AV = averageVolts*1000;
 		Robot.lastAnalogValue = (int) (AV/4.9);
-		
 		
 		return Robot.lastAnalogValue;
     }
@@ -30,7 +29,6 @@ public class Ultrasonic {
 		double AV = averageVolts*1000;
 		Robot.lastAnalogValue2 = (int) (AV/4.9);
 		
-		//System.out.println(Robot.lastAnalogValue2);
 		return Robot.lastAnalogValue2;
 		
     }

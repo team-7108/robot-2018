@@ -4,15 +4,20 @@ import org.usfirst.frc7108.Robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class UltrasonicFilter{
+public class UltrasonicFilter
+{
 	private double smoothedValue = 0;
 	double filterValue = 0.6;
 	int sensorRead = Robot.lastAnalogValue;
 		
-		public double getSmoothVal() {
-			if (filterValue >1) {
+		public double getSmoothVal() 
+		{
+			
+			if (filterValue >1) 
+			{
 				filterValue = 0.99;
-			}else if(filterValue <=0){
+			}else if(filterValue <=0)
+			{
 				filterValue = 0;
 			}
 			
@@ -23,8 +28,5 @@ public class UltrasonicFilter{
 			return smoothedValue;
 		
 		
-	}
-		//System.out.println(getSmoothVal);
-		
-		
+	}	
 }

@@ -17,15 +17,14 @@ public class AutonomousDelay extends Command{
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
     	Robot.driveTrain.autonomousStop();
-    	
-    	
-     // may need to call getJoystick() method
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() 
+    {
 		return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
     }
 
@@ -33,12 +32,12 @@ public class AutonomousDelay extends Command{
     protected void end() 
     {
     	Robot.driveTrain.autonomousStop();
-
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
     	end();
     }
 

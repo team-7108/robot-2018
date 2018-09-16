@@ -19,15 +19,14 @@ public class AutonomousTurn extends Command{
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.driveTrain.autonomousStop(this.speed);//+ verirsen saga - verirsen sola doner
-    	
-    	
-     // may need to call getJoystick() method
+    protected void execute() 
+    {
+    	Robot.driveTrain.autonomousStop(this.speed);//+ value makes it go right, - value makes it go left
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() 
+    {
 		return (System.currentTimeMillis() - startTime) > (int) (1000d * seconds);
     }
 
@@ -35,12 +34,12 @@ public class AutonomousTurn extends Command{
     protected void end() 
     {
     	Robot.driveTrain.autonomousStop();
-
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
     	end();
     }
 }

@@ -7,26 +7,31 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Lift extends Command{
+public class Lift extends Command
+{
 
-	public Lift() {
-		requires(Robot.clifter);
+	public Lift() 
+	{
+		requires(Robot.clifter);		
+	}
+	protected void initialize() 
+	{
 		
 	}
-	protected void initialize() {
-		
-	}
-	protected void execute() {
+	protected void execute() 
+	{
 		 Robot.clifter.Lifter(Robot.oi.xbox.getRawAxis(5));
 	}
-	protected boolean isFinished() {
+	protected boolean isFinished() 
+	{
         return false;
     }
-	 protected void end() 
-	    {
+	protected void end() 
+	{
 	    	Robot.clifter.Stop();
-	    }
-	 protected void interrupted() {
-	    	end();
-	    }
+	}
+	protected void interrupted() 
+	{
+	    end();
+	}
 }

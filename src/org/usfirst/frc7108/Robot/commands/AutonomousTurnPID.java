@@ -1,4 +1,3 @@
-// Allahim lutfen duzgun calissin
 package org.usfirst.frc7108.Robot.commands;
 
 import org.usfirst.frc7108.Robot.Robot;
@@ -50,8 +49,8 @@ import edu.wpi.first.wpilibj.command.Command;
 		System.out.println(power);
 		System.out.println("True Flag :    "+ true_flag);
 		error_old = error;
-		if(yawAngle < angle+2 && yawAngle > angle-2) {
-			// System.out.println("Kedicik");
+		if(yawAngle < angle+2 && yawAngle > angle-2) 
+		{
 			true_flag++;
 		}
 		else
@@ -59,18 +58,22 @@ import edu.wpi.first.wpilibj.command.Command;
 			true_flag = 0;
 		}
 	}
-	protected boolean isFinished() {
+	protected boolean isFinished() 
+	{		
 		// System.out.print("True flag: ");
 		// System.out.println(true_flag);
-		if(true_flag >= 5) {
+		if(true_flag >= 5) 
+		{
 			return true;
 		}
-		else {
+		else 
+		{
 			return false;
 		}
 		
 	}
-	protected void end() {
+	protected void end() 
+	{
 		Robot.driveTrain.autonomousStop();
 	}
 }

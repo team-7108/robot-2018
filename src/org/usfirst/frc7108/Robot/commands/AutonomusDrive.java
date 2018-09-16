@@ -9,35 +9,34 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class AutonomusDrive extends Command{
+public class AutonomusDrive extends Command
+{
 
 	long startTime;
 	double seconds;
 	double mesafe;
 	boolean durum;
 	
-	public AutonomusDrive(double _mesafe) {
+	public AutonomusDrive(double _mesafe) 
+	{
 		this.mesafe = _mesafe;
-		//this.seconds = _seconds;		
 		requires(Robot.driveTrain);
 	}
-	protected void initialize() {
+	protected void initialize() 
+	{
 		startTime = System.currentTimeMillis();
 
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
     	Robot.driveTrain.autonomousForward();
-    	
-    	
-     // may need to call getJoystick() method
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-		//return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
-    	
+    protected boolean isFinished()
+    {    	
     	return (Robot.lastAnalogValue > (int) this.mesafe);
     }
 
@@ -50,7 +49,8 @@ public class AutonomusDrive extends Command{
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
     	end();
     }
 

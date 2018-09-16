@@ -3,46 +3,46 @@ import edu.wpi.first.wpilibj.I2C;
 import org.usfirst.frc7108.Robot.RobotMap;
 
 
-public class mpuGyro {
+public class mpuGyro 
+{
 	private double angle = 0; // The accumulated degrees from the get rotations per second function
 	private double rotation = 0; // The degrees of the blue gyro
 	private double rotatedAmount = 0;
     private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 		
-	public double getAngle () {
+	public double getAngle () 
+	{
 		return -angle;
     }
     
-    public double getRotation() {
+    public double getRotation() 
+    {
         return rotation;
     }
     
-    public void setAngle(double angleToSet) {
+    public void setAngle(double angleToSet) 
+    {
         angle = angleToSet;
     }
 
-    public void setRotation(double rotationToSet) {
+    public void setRotation(double rotationToSet) 
+    {
         rotation = rotationToSet;
     }
 
-	public void zeroGyro () {
+	public void zeroGyro () 
+	{
         setAngle(0);
     }
 
-    public mpuGyro() { // main constructor
-        
-        // If we are working on a real robot, setup the sensor
-        /*if(RobotMap.robotType == robotType_.ROBOT)
-        {
-            setupGyro();
-        }*/
-        // Else it is a test, no need for setup
-    	
-    	setupGyro();
+    public mpuGyro() 
+    { 
+    	// Main constructor
+       	setupGyro();
     }
 
-    private void setupGyro() {
-        
+    private void setupGyro()
+    {
 		gyro.write(0x6B, 0x00); // Power Config
 		gyro.write(0x1A, 0x23); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
@@ -54,7 +54,8 @@ public class mpuGyro {
         gyro.write(0x19, 0x04); // Set sample rate to 200Hz    
     }
 
-    private int uByteToInt (byte number) {
+    private int uByteToInt (byte number) 
+    	{
 		int iNumber = number & 0b01111111;
 		
 		if (number < 0) {
@@ -64,21 +65,9 @@ public class mpuGyro {
 		return iNumber;
     }
     
-    public void updateGyro() {
-        // If we are working on a real robot, fetch data from real sensor
-        /*if(RobotMap.robotType == robotType_.ROBOT)
-        {
-            updateGyroFromSensor();
-        }
-        // Else just update the data accordingly
-        else
-        {
-            rotatedAmount = rotation*0.02;
-            if (rotatedAmount > 0.055 || rotatedAmount < -0.055) { // Filter out noise
-                angle += rotatedAmount; // angle in degrees
-            }
-        }*/
-    	
+    public void updateGyro() 
+    {
+
     	updateGyroFromSensor();
 
     }

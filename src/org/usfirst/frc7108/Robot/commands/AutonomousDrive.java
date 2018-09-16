@@ -16,28 +16,26 @@ public class AutonomousDrive extends Command{
 	double mesafe;
 	boolean durum;
 	
-	public AutonomousDrive(double _mesafe) {
+	public AutonomousDrive(double _mesafe) 
+	{
 		this.mesafe = _mesafe;
-		//this.seconds = _seconds;		
 		requires(Robot.driveTrain);
 	}
-	protected void initialize() {
+	
+	protected void initialize() 
+	{
 		startTime = System.currentTimeMillis();
-
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
     	Robot.driveTrain.autonomousForward();
-    	
-    	
-     // may need to call getJoystick() method
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-		//return (System.currentTimeMillis() - startTime) > (int) (1000d * this.seconds);
-    	
+    protected boolean isFinished()
+    {
     	return (Robot.lastAnalogValue > (int) this.mesafe);
     }
 
@@ -45,11 +43,9 @@ public class AutonomousDrive extends Command{
     protected void end() 
     {
     	Robot.driveTrain.autonomousStop();
-
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+
     protected void interrupted() {
     	end();
     }

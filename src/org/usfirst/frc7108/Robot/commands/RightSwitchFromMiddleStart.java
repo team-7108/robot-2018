@@ -4,12 +4,12 @@ import org.usfirst.frc7108.Robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
-public class RightSwitchFromMiddleStart extends CommandGroup {
+public class RightSwitchFromMiddleStart extends CommandGroup 
+{
 
-    public RightSwitchFromMiddleStart() {
+    public RightSwitchFromMiddleStart() 
+    {
+    	
     	requires(Robot.driveTrain);
     	this.addSequential(new AutonomousDrivePID(150));
     	this.addSequential(new AutonomousTurnPID(30));
@@ -19,5 +19,6 @@ public class RightSwitchFromMiddleStart extends CommandGroup {
     	this.addParallel(new AutonomousLift(3));
     	this.addSequential(new AutonomousDrive(1));
     	this.addSequential(new releaseCube(3));
+    	
     }
 }
