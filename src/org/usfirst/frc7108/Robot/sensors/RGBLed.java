@@ -2,48 +2,56 @@ package org.usfirst.frc7108.Robot.sensors;
 
 
 import java.awt.Color;
-import edu.wpi.first.wpilibj.SendableBase;
+
+import org.usfirst.frc7108.Robot.RobotMap;
+
 import edu.wpi.first.wpilibj.PWM;
 
 public class RGBLed {
 	
-	private Color color = Color.BLACK;
-	public void getChannel() {
-		
-	}
-	int r, g, b;
+	private final PWM RGBLed = RobotMap.RgbLed;
+	private final Color color = Color.BLACK;
+	int red;
+	int green;
+	int blue;
 	
-	
-	
-	public void setColor(int r, int g, int b) {
+	public void setColor(int red, int green, int blue) {
+		setColor(255,0,0);
+		this.red = red;
 		
-		setColor(255,0,0); //Red
-		setColor(0,255,0); //Green
-		setColor(0,0,255); //Blue
+		setColor(0,255,0);
+		this.green = green;
 		
-	}
-	public void RGBLed () {
-	 this.color.getRed();
-	 this.color.getGreen();
-	 this.color.getBlue();
+		setColor(0,0,255);
+		this.blue = blue;
 	}
 	
+	public int getRed() {
+		return red;
+	}
 	
+	public int getGreen() {
+		return green;
+	}
+	
+	public int getBlue() {
+		return blue;
+	}
+
+	public PWM getRGBLed() {
+		RGBLed.getRaw();
+		
+		return RGBLed;
+	}
+
+	public Color getColor() {
+		return color;
+	}
 	
 	
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 	
 	
