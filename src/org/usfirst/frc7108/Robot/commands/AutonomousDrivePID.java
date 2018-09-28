@@ -1,3 +1,4 @@
+//ALI KOC BASKANIM YARDIM ET
 package org.usfirst.frc7108.Robot.commands;
 
 
@@ -22,52 +23,48 @@ public class AutonomousDrivePID extends Command {
       double yawAngle= Robot.gyro.getAngle(); 
       double angle ;
       double angle_error= angle-yawAngle;
+      
       double angle_oldError=angle_error;
       int true_flag = 0;
       double accuracy = 3;
-      double p=0.0014;
-      double d=0.04;
-      double accuracy_angle=2;
-   
-      public AutonomousDrivePID(double _distance ) 
-      {
+      double p=0.05;
+      double d=0.12;
+    public AutonomousDrivePID(double _distance ) {
     	requires(Robot.driveTrain);
+    //	requires(Robot.lastAnalogValue);
     	this.distance= _distance;
-      }
+    //	current_distance=Robot.lastAnalogValue;
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    //	Robot.gyro.zeroGyro();
     	Robot.gyro.updateGyro();
-    	yawAngle=Robot.gyro.getAngle();
+    	angle=Robot.gyro.getAngle();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() 
-    {
+    protected void execute() {
     	Robot.gyro.updateGyro();
-    	current_distance = Robot.ultrasonic.ultrasonic1();
-    	angle
-    	= Robot.gyro.getAngle();
-		angle_error = angle - yawAngle;
-		
+    	current_distance=Robot.ultrasonic.ultrasonic1();
+    	yawAngle= Robot.gyro.getAngle();
+		angle_error = angle - yawAngle; 
     	
 
-    	distance_error = distance-current_distance;
+    	distance_error= distance-current_distance;
     	
     	angle_power = p*angle_error+(d*(angle_error-angle_oldError));
 		
 	
-		if (distance_error<0) 
-		{
+		if (distance_error<0) {
 			power = -0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
+			
 		}
-		else 
-		{
+		else {
 			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
-		left_power =.3 - angle_power;
-		right_power =.3+angle_power;
+		left_power =power+angle_power;
+		right_power =power+angle_power;
 		
 		if (left_power>1)
 		{left_power=1;}
@@ -79,7 +76,9 @@ public class AutonomousDrivePID extends Command {
 		{right_power=-1;}
 		Robot.driveTrain.autonomousLeftMotor(left_power);
 		Robot.driveTrain.autonomousRightMotor(right_power);
-		
+		//Robot.driveTrain.autonomousForward(power);
+		//Robot.driveTrain.autonomousLeftMotor(0.4);
+		//Robot.driveTrain.autonomousRightMotor(0.4);
 		System.out.println("Measured Distance:");
 		System.out.print(current_distance+ "		");
 		System.out.print("Error Distance");
@@ -97,28 +96,33 @@ public class AutonomousDrivePID extends Command {
 		     
 		     
 		     distance_oldError= distance_error;
-	if(current_distance< distance+ accuracy && current_distance > distance-accuracy) 
-	{
+	if(current_distance< distance+ accuracy && current_distance > distance-accuracy) {
 		System.out.println("arizona kertenkelecik");
 		true_flag++;
+		
 	}
 	else 
 	{
 		true_flag=0;
-	}	
+		
+	}
+
+	
+	
+	
+    	
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (true_flag>=5) 
-    	{
+    	if (true_flag>=5) {
     		return true;
     	}
-    	else 
-    	{
-    		return false;
-    	}
+    else {
+    	return false;
+    	
+    }
     	
     	
 }
@@ -133,3 +137,4 @@ public class AutonomousDrivePID extends Command {
     	
     }
 }
+
