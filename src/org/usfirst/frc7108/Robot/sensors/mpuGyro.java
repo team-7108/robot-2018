@@ -78,7 +78,7 @@ public class mpuGyro
 		
 		if ((dataReady[0] & 0x00000001) > 0) {
 			byte[] angleByte = new byte[2];
-			 gyro.read(0x43, 2, angleByte);
+			 gyro.read(0x47, 2, angleByte);
 			int highOrder = (int) angleByte[0];
 			int lowOrder = uByteToInt(angleByte[1]);
             

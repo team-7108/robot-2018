@@ -20,13 +20,14 @@ public class AutonomousDrivePID extends Command {
       double right_power;
       double left_power;
       double yawAngle= Robot.gyro.getAngle(); 
-      double angle = 0;
+      double angle ;
       double angle_error= angle-yawAngle;
       double angle_oldError=angle_error;
       int true_flag = 0;
       double accuracy = 3;
-      double p=0.05;
-      double d=0.12;
+      double p=0.0014;
+      double d=0.04;
+      double accuracy_angle=2;
    
       public AutonomousDrivePID(double _distance ) 
       {
@@ -36,6 +37,9 @@ public class AutonomousDrivePID extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    //	Robot.gyro.zeroGyro();
+    	Robot.gyro.updateGyro();
+    	yawAngle=Robot.gyro.getAngle();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,8 +47,10 @@ public class AutonomousDrivePID extends Command {
     {
     	Robot.gyro.updateGyro();
     	current_distance = Robot.ultrasonic.ultrasonic1();
-    	angle = Robot.gyro.getAngle();
-		angle_error = angle - yawAngle; 
+    	angle
+    	= Robot.gyro.getAngle();
+		angle_error = angle - yawAngle;
+		
     	
 
     	distance_error = distance-current_distance;
@@ -60,8 +66,8 @@ public class AutonomousDrivePID extends Command {
 		{
 			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
-		left_power =power;
-		right_power =power;
+		left_power =.3 - angle_power;
+		right_power =.3+angle_power;
 		
 		if (left_power>1)
 		{left_power=1;}

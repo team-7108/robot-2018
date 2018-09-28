@@ -211,6 +211,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopInit() 
     {
+    	gyro.zeroGyro();
         
     	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -225,11 +226,14 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        /*
         System.out.print("Without smoothing  :   ");
         System.out.println(ultrasonic.ultrasonic1());
         System.out.println("With smoothing  :   " + ultrasonicfilter.getSmoothVal());
+        */
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
+        System.out.println(yawAngle);
         table.putNumber("X",x);
         x += 1;
         y = table.getNumber("Y", 0.0);
