@@ -17,6 +17,7 @@ import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 import org.usfirst.frc7108.Robot.subsystems.CLifter;
 import org.usfirst.frc7108.Robot.subsystems.Gripper;
 import org.usfirst.frc7108.Robot.subsystems.Pneumatic;
+import org.usfirst.frc7108.Robot.utils.Logging;
 import org.usfirst.frc7108.Robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -84,7 +85,23 @@ public class Robot extends TimedRobot
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    @Override
+   
+    
+    public Robot() {
+    	
+    	try
+        {
+            Logging.CustomLogger.setup();
+        }
+        catch (Throwable e) { Logging.logException(e);}
+        
+        Logging.consoleLog();
+
+    	
+    }
+    
+    
+    
     public void robotInit() 
     {
         RobotMap.init();
@@ -110,6 +127,8 @@ public class Robot extends TimedRobot
         oi = new OI();
         autoCG = new Autonomous();
         SmartDashboard.putData("Auto mode", chooser);
+        
+        Logging.consoleLog();
     }
 
     /**
@@ -140,6 +159,9 @@ public class Robot extends TimedRobot
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		int station = DriverStation.getInstance().getLocation();
+		
+		Logging.consoleLog();
+
 
 		switch (station)  {
 		// Left
@@ -202,6 +224,8 @@ public class Robot extends TimedRobot
     {
         Scheduler.getInstance().run();
          ultrasonic.ultrasonic1();
+         Logging.consoleLog();
+
         
     }
     
@@ -211,7 +235,8 @@ public class Robot extends TimedRobot
     @Override
     public void teleopInit() 
     {
-        
+    	Logging.consoleLog();
+
     	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
@@ -252,5 +277,10 @@ public class Robot extends TimedRobot
 
     }
     
+        Logging.consoleLog("I can log any information I want");
+        Logging.consoleLog("Working..."); 
+       System.out.println("OK");
+
+        
   }
 }
