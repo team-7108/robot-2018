@@ -278,6 +278,7 @@ public class Robot extends TimedRobot
     }
     
         Logging.consoleLog("I can log any information I want");
+        Logging.consoleLog("Working..."); 
        System.out.println("OK");
 
         

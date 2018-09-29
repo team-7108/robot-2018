@@ -87,10 +87,18 @@ public class Logging {
             
             //if (true) throw new IOException("Test Exception");
             
-            if (new File("/home/lvuser/Logging.txt.99").exists() != true)
-                fileTxt = new FileHandler("/home/lvuser/Logging.txt");
-            else
-                throw new IOException("Max number of log files reached.");
+            String fileName = "/home/lvuser/Logging.txt.";
+            int x = 1;
+            while(true) {
+            	String fileTxt1 = fileName + String.valueOf(x);
+            	if(new File(fileTxt1).exists()==true) {
+            		x++;
+            	}
+            	else {
+            		fileTxt = new FileHandler(fileTxt1);
+            		break;
+            	}
+            }
             
             fileTxt.setFormatter(logFormatter);
 
