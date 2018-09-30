@@ -8,13 +8,14 @@ public class Arduino {
 	public static SerialPort arduinoUSB =  new SerialPort(9600 ,SerialPort.Port.kUSB); // USB needs to be changed
 	public static String receivedData;
 	
-	public void readFromArduino(int receivedDataCharCount) {
+	public String readFromArduino(int receivedDataCharCount) {
 		arduinoUSB.flush();
 		receivedData =  arduinoUSB.readString(receivedDataCharCount);
+		return receivedData;
 	}
 	
-	public void writeToArduino() {
-		arduinoUSB.writeString("Hello from RoboRIO");
+	public void writeToArduino(String message) {
+		arduinoUSB.writeString(message);
 	}
 
 }

@@ -17,6 +17,7 @@ import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 import org.usfirst.frc7108.Robot.subsystems.CLifter;
 import org.usfirst.frc7108.Robot.subsystems.Gripper;
 import org.usfirst.frc7108.Robot.subsystems.Pneumatic;
+import org.usfirst.frc7108.Robot.utils.Arduino;
 import org.usfirst.frc7108.Robot.utils.Logging;
 import org.usfirst.frc7108.Robot.subsystems.DriveTrain;
 
@@ -80,6 +81,7 @@ public class Robot extends TimedRobot
 	public static Ultrasonic ultrasonic;
 	public static NetworkTable table;
 	public static double x,y;
+	public static Arduino arduino;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -118,7 +120,7 @@ public class Robot extends TimedRobot
         ultrasonicfilter = new UltrasonicFilter();
         CameraServer.getInstance().startAutomaticCapture();
         table = NetworkTable.getTable("datatable");
-        
+        arduino = new Arduino();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
@@ -276,10 +278,17 @@ public class Robot extends TimedRobot
             table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
 
     }
-    
-        Logging.consoleLog("I can log any information I want");
-        Logging.consoleLog("Working..."); 
-       System.out.println("OK");
+        
+    try {
+	    arduino.writeToArduino("a");
+	    String receviedData = arduino.readFromArduino(9);
+	    System.out.println(receviedData);
+	    Logging.consoleLog(receviedData);
+    }
+    catch (Throwable e) {System.out.println("Cannot find arduino"); }
+    Logging.consoleLog("I can log any information I want");
+    Logging.consoleLog("Working..."); 
+    System.out.println("OK");
 
         
   }
