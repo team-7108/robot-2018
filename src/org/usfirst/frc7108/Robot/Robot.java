@@ -238,6 +238,18 @@ public class Robot extends TimedRobot
     public void teleopInit() 
     {
     	Logging.consoleLog();
+    	
+        if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red ) {
+        	// RED LED
+        	arduino.writeToArduino("a");
+        } else if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
+        	// BLUE LED
+        	arduino.writeToArduino("c");
+        }
+        else {
+        	// Couldn't get alliance color, give alert
+        	System.out.println("*WARNING* couldn't get alliance color");
+        }
 
     	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -266,26 +278,28 @@ public class Robot extends TimedRobot
         	boolean limitSwitchStatus = true;
         	table.putBoolean("Limit Switch Status", limitSwitchStatus);
         	counter.reset();
-        }else {
-        	boolean limitSwitchStatus = false;
-        	table.putBoolean("Limit Switch Status", limitSwitchStatus);
-        	counter.reset();
-        	
-         	int ult1 = (int) Ultrasonic.ultrasonic1();
-        	int ult2 = (int) Ultrasonic.ultrasonic2();
-        	
-        	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
-            table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
+        } else {
+	    	boolean limitSwitchStatus = false;
+	    	table.putBoolean("Limit Switch Status", limitSwitchStatus);
+	    	counter.reset();
+	    	
+	     	int ult1 = (int) Ultrasonic.ultrasonic1();
+	    	int ult2 = (int) Ultrasonic.ultrasonic2();
+	    	
+	    	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
+	        table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
 
-    }
+        }
         
+    /*    
     try {
-	    arduino.writeToArduino("a");
+	    // arduino.writeToArduino("a");
 	    String receviedData = arduino.readFromArduino(9);
 	    System.out.println(receviedData);
 	    Logging.consoleLog(receviedData);
     }
     catch (Throwable e) {System.out.println("Cannot find arduino"); }
+    */
     Logging.consoleLog("I can log any information I want");
     Logging.consoleLog("Working..."); 
     System.out.println("OK");
