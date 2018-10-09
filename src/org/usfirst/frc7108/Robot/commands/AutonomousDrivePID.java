@@ -60,8 +60,8 @@ public class AutonomousDrivePID extends Command {
 		{
 			power = 0.2 + (kP*distance_error+(kD*(distance_error-distance_oldError)));	
 		}
-		left_power =power;
-		right_power =power;
+		left_power =-power;
+		right_power =-power;
 		
 		if (left_power>1)
 		{left_power=1;}

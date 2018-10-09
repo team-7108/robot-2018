@@ -89,7 +89,7 @@ public class DriveTrain extends Subsystem
  		rightRearTalon.set(0);
  	}
  	
- 	public void autonomousStop(double speed) 
+ 	public void autonomousTurn(double speed) 
  	{
  		// if speed is - robot goes left, else right
  		leftFrontTalon.set(-speed);

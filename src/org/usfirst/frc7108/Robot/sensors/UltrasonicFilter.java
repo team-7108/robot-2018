@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class UltrasonicFilter
 {
-	private double smoothedValue = 0;
+	private double smoothedValue;
 	double filterValue = 0.6;
 	int sensorRead = Robot.lastAnalogValue;
 		
@@ -20,12 +20,11 @@ public class UltrasonicFilter
 			{
 				filterValue = 0;
 			}
-			
-			smoothedValue = (Robot.lastAnalogValue*(1 - filterValue)+(smoothedValue*filterValue));
-			
+			 smoothedValue = (Robot.lastAnalogValue*(1 - filterValue)+(smoothedValue*filterValue));
 			
 			
-			return smoothedValue;
+			
+			return (int) smoothedValue;
 		
 		
 	}	

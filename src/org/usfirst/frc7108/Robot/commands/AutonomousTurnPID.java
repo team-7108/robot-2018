@@ -32,7 +32,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		power = -0.2 + ((kP*error + (kD*(error-error_old))));
 		}
 		else {
-			power = 0.2 + ((kP*error + (kD*(error-error_old))));			
+			power = +0.2 + ((kP*error + (kD*(error-error_old))));			
 		}
 		if(power > 1) {
 			power = 1;
@@ -40,7 +40,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		else if(power < -1) {
 			power = -1;
 		}
-		Robot.driveTrain.autonomousStop(-power);
+		Robot.driveTrain.autonomousTurn(power);
 		System.out.print("Measured: ");
 		System.out.print(yawAngle);
 		System.out.print("Error: ");

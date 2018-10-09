@@ -251,8 +251,8 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.print("Without smoothing  :   ");
-        System.out.println(ultrasonic.ultrasonic1());
+       // System.out.print("Without smoothing  :   ");
+        //System.out.println(ultrasonic.ultrasonic1());
         System.out.println("With smoothing  :   " + ultrasonicfilter.getSmoothVal());
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
@@ -278,9 +278,9 @@ public class Robot extends TimedRobot
 
     }
     
-        Logging.consoleLog("I can log any information I want");
-        Logging.consoleLog("Working..."); 
-       System.out.println("OK");
+        //Logging.consoleLog("I can log any information I want");
+        //Logging.consoleLog("Working..."); 
+       //System.out.println("OK");
 
         
   }

@@ -21,7 +21,7 @@ public class AutonomousTurn extends Command{
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Robot.driveTrain.autonomousStop(this.speed);//+ value makes it go right, - value makes it go left
+    	Robot.driveTrain.autonomousTurn(this.speed);//+ value makes it go right, - value makes it go left
     }
 
     // Make this return true when this Command no longer needs to run execute()
