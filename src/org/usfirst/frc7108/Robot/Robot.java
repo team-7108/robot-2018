@@ -41,6 +41,7 @@ import org.usfirst.frc7108.Robot.commands.RightScaleFromLeftStart;
 import org.usfirst.frc7108.Robot.commands.RightScaleFromRightStart;
 import org.usfirst.frc7108.Robot.commands.RightSwitchFromMiddleStart;
 import org.usfirst.frc7108.Robot.commands.RightSwitchFromRightStart;
+import org.usfirst.frc7108.Robot.commands.UltrasonicTest;
 import org.usfirst.frc7108.Robot.sensors.UltrasonicFilter;
 
 /**
@@ -168,7 +169,7 @@ public class Robot extends TimedRobot
 	        case 1:
 	        	switch (gameData.substring(0, 2)) {
 	        	case "LR":
-	        		autoCG.addSequential(new LeftSwitchFromLeftStart());
+	        		autoCG.addSequential(new UltrasonicTest());
 	        		break;
 	        	case "RL":
 	        		autoCG.addSequential(new LeftScaleFromLeftStart());

@@ -45,7 +45,7 @@ public class RobotMap {
     public static DoubleSolenoid db;
     
     public static void init() {
-        driveTrainleftFrontTalon = new WPI_TalonSRX(11);
+        driveTrainleftFrontTalon = new WPI_TalonSRX(12);
         driveTrainleftFrontTalon.setInverted(true);
         
         driveTrainleftRearTalon = new WPI_TalonSRX(13);
@@ -63,7 +63,7 @@ public class RobotMap {
         gripperKutuMotor1.setInverted(false);
         gripperKutuMotor2.setInverted(false);
         
-        lifterMotor1 = new WPI_TalonSRX(12);
+        lifterMotor1 = new WPI_TalonSRX(11);
         lifterMotor2 = new WPI_TalonSRX(16);
         
        
