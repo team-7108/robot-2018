@@ -1,4 +1,4 @@
-/*
+
 package org.usfirst.frc7108.Robot.commands;
 
 import org.usfirst.frc7108.Robot.Robot;
@@ -14,6 +14,7 @@ public class Forward extends Command {
 	}
 	protected void execute() {
 		 Robot.pnomatik.Forward();
+		 
 	}
 	protected boolean isFinished() {
         return false;
@@ -26,4 +27,3 @@ public class Forward extends Command {
 	    	end();
 	    }
 }
-*/
