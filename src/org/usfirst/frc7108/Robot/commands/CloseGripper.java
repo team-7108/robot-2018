@@ -1,12 +1,12 @@
-/*
+
 package org.usfirst.frc7108.Robot.commands;
 
 import org.usfirst.frc7108.Robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Forward extends Command {
-	public Forward() {
+public class CloseGripper extends Command {
+	public CloseGripper() {
 		requires(Robot.pnomatik);
 	}
 	protected void initialize() {
@@ -14,6 +14,7 @@ public class Forward extends Command {
 	}
 	protected void execute() {
 		 Robot.pnomatik.Forward();
+		 
 	}
 	protected boolean isFinished() {
         return false;
@@ -26,4 +27,3 @@ public class Forward extends Command {
 	    	end();
 	    }
 }
-*/

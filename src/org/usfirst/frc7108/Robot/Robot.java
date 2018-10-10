@@ -123,7 +123,7 @@ public class Robot extends TimedRobot
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
-        
+        RobotMap.compresor.setClosedLoopControl(true);
         oi = new OI();
         autoCG = new Autonomous();
         SmartDashboard.putData("Auto mode", chooser);
@@ -235,6 +235,8 @@ public class Robot extends TimedRobot
     @Override
     public void teleopInit() 
     {
+    	gyro.zeroGyro();
+        
     	Logging.consoleLog();
 
     	// This makes sure that the autonomous stops running when
@@ -250,11 +252,14 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        /*
         System.out.print("Without smoothing  :   ");
         System.out.println(ultrasonic.ultrasonic1());
         System.out.println("With smoothing  :   " + ultrasonicfilter.getSmoothVal());
+        */
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
+        System.out.println(yawAngle);
         table.putNumber("X",x);
         x += 1;
         y = table.getNumber("Y", 0.0);
