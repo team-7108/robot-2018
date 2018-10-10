@@ -19,6 +19,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 //import org.usfirst.frc7108.Robot.commands.Forward;
 import org.usfirst.frc7108.Robot.commands.takeCube;
+import org.usfirst.frc7108.Robot.commands.CloseGripper;
+import org.usfirst.frc7108.Robot.commands.GripperFold;
+import org.usfirst.frc7108.Robot.commands.GripperRelease;
+import org.usfirst.frc7108.Robot.commands.OpenGripper;
 import org.usfirst.frc7108.Robot.commands.releaseCube;
 import org.usfirst.frc7108.Robot.commands.releaseCubeTeleop;
 //import org.usfirst.frc7108.Robot.commands.Reverse;
@@ -65,13 +69,17 @@ public class OI {
         xbox = new Joystick(0);
         Button button = new JoystickButton(xbox,5);
         Button button1 = new JoystickButton(xbox,6);
-        // Button button2 = new JoystickButton(xbox,3);
-        // Button button3 = new JoystickButton(xbox,4);
+        Button button2 = new JoystickButton(xbox,3);
+        Button button3 = new JoystickButton(xbox,4);
+        Button button4 = new JoystickButton(xbox,1);
+        Button button5 = new JoystickButton(xbox,2);
 
         button.whileHeld(new takeCube());
         button1.whileHeld(new releaseCubeTeleop());
-        // button2.whenPressed(new Forward());
-        // button3.whenPressed(new Reverse());
+         button2.whenPressed(new CloseGripper());
+         button3.whenPressed(new OpenGripper());
+         button4.whenPressed(new GripperFold());
+         button5.whenPressed(new GripperRelease());
     }	
 
     public Joystick getxbox() {

@@ -5,8 +5,8 @@ import org.usfirst.frc7108.Robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Reverse extends Command{
-	public Reverse() {
+public class OpenGripper extends Command{
+	public OpenGripper() {
 		requires(Robot.pnomatik);
 	}
 	protected void initialize() {

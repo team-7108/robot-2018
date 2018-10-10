@@ -5,8 +5,8 @@ import org.usfirst.frc7108.Robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Forward extends Command {
-	public Forward() {
+public class CloseGripper extends Command {
+	public CloseGripper() {
 		requires(Robot.pnomatik);
 	}
 	protected void initialize() {
