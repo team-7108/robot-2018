@@ -118,11 +118,7 @@ public class Robot extends TimedRobot
         ultrasonicfilter = new UltrasonicFilter();
         CameraServer.getInstance().startAutomaticCapture();
         table = NetworkTable.getTable("datatable");
-        
-        // OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
+        table.putBoolean("init", true);
         RobotMap.compresor.setClosedLoopControl(true);
         oi = new OI();
         autoCG = new Autonomous();
@@ -272,16 +268,18 @@ public class Robot extends TimedRobot
         }else {
         	boolean limitSwitchStatus = false;
         	table.putBoolean("Limit Switch Status", limitSwitchStatus);
-        	counter.reset();
-        	
-         	int ult1 = (int) Ultrasonic.ultrasonic1();
-        	int ult2 = (int) Ultrasonic.ultrasonic2();
-        	
-        	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
-            table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
-
-    }
+        	counter.reset();      
+        }
     
+        int ult1 = (int) Ultrasonic.ultrasonic1();
+    	int ult2 = (int) Ultrasonic.ultrasonic2();
+    	
+    	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
+    	//Uncomment the next line to send the second sensors value
+    	//table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
+        
+    	table.putDouble("tyme", DriverStation.getInstance().getMatchTime());
+    	
         Logging.consoleLog("I can log any information I want");
         Logging.consoleLog("Working..."); 
        System.out.println("OK");
