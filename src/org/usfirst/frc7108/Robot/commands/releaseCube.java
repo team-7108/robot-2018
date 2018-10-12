@@ -27,7 +27,10 @@ public class releaseCube extends Command
 		    // Called repeatedly when this Command is scheduled to run
 		    protected void execute() 
 		    {
-		    Robot.gripper.gripperRelease(0.8);
+		    
+		    	Robot.gripper.gripperRelease(0.8);
+		    	Robot.table.putBoolean("releaseCube", true);
+		    
 		    }
 
 		    // Make this return true when this Command no longer needs to run execute()
