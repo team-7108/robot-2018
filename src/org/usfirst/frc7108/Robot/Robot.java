@@ -148,7 +148,15 @@ public class Robot extends TimedRobot
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-    }
+        
+        
+        
+        
+        if(arduino.arduinoUSB.readString() == "sa") {
+        	arduino.writeToArduino("d");
+        }
+        	
+        }
 
     /**
      * This function is called once when the autonomous phase starts.
