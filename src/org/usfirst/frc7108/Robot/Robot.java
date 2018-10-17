@@ -133,7 +133,7 @@ public class Robot extends TimedRobot
      */
     @Override
     public void disabledInit(){
-
+    	table.putString("roboStat", "Disabled");
     }
     
     /**
@@ -153,6 +153,7 @@ public class Robot extends TimedRobot
 		Scheduler.getInstance().removeAll();
 		gyro.zeroGyro();
 		String gameData;
+		table.putString("roboStat", "Autonomous");
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		int station = DriverStation.getInstance().getLocation();
 		
@@ -232,7 +233,7 @@ public class Robot extends TimedRobot
     public void teleopInit() 
     {
     	gyro.zeroGyro();
-        
+    	table.putString("roboStat", "Tele-Operated");
     	Logging.consoleLog();
 
     	// This makes sure that the autonomous stops running when
@@ -270,15 +271,19 @@ public class Robot extends TimedRobot
         	table.putBoolean("Limit Switch Status", limitSwitchStatus);
         	counter.reset();      
         }
-    
+       
         int ult1 = (int) Ultrasonic.ultrasonic1();
     	int ult2 = (int) Ultrasonic.ultrasonic2();
+    	
     	
     	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
     	//Uncomment the next line to send the second sensors value
     	//table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
         
     	table.putDouble("tyme", DriverStation.getInstance().getMatchTime());
+    	
+    	
+    	
     	
         Logging.consoleLog("I can log any information I want");
         Logging.consoleLog("Working..."); 
