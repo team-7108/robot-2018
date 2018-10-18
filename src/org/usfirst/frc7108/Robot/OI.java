@@ -64,17 +64,19 @@ public class OI {
 
 
     public Joystick xbox;
+    public Joystick logitech;
     
     public OI() {
 
         xbox = new Joystick(0);
-        Button button  = new JoystickButton(xbox,5); // Take Cube
-        Button button1 = new JoystickButton(xbox,6); // Release Cube
-        Button button2 = new JoystickButton(xbox,3); // Close Gripper
-        Button button3 = new JoystickButton(xbox,4); // Open Gripper
+        logitech = new Joystick(1);
+        Button button  = new JoystickButton(logitech,5); // Take Cube
+        Button button1 = new JoystickButton(logitech,6); // Release Cube
+        Button button2 = new JoystickButton(logitech,3); // Close Gripper
+        Button button3 = new JoystickButton(logitech,4); // Open Gripper
         Button button4 = new JoystickButton(xbox,1); // Fold Gripper
         Button button5 = new JoystickButton(xbox,2); // Release Gripper
-        Button button6 = new JoystickButton(xbox,7); // Close compressor
+        Button button6 = new JoystickButton(logitech,7); // Close compressor
         
         button.whileHeld(new takeCube());
         button1.whileHeld(new releaseCubeTeleop());
