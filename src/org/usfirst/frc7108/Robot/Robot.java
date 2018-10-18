@@ -155,13 +155,13 @@ public class Robot extends TimedRobot
         
         
         
-        if(arduino.arduinoUSB.readString() == "sa") {
+        if(arduino.arduinoUSB.readString() == "s") {
         	arduino.writeToArduino("d");
         }
         	
         }
         
-    }
+    
 
     /**
      * This function is called once when the autonomous phase starts.
