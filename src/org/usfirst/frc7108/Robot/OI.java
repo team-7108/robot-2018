@@ -23,6 +23,7 @@ import org.usfirst.frc7108.Robot.commands.CloseGripper;
 import org.usfirst.frc7108.Robot.commands.GripperFold;
 import org.usfirst.frc7108.Robot.commands.GripperRelease;
 import org.usfirst.frc7108.Robot.commands.OpenGripper;
+import org.usfirst.frc7108.Robot.commands.compressorSwitcher;
 import org.usfirst.frc7108.Robot.commands.releaseCube;
 import org.usfirst.frc7108.Robot.commands.releaseCubeTeleop;
 //import org.usfirst.frc7108.Robot.commands.Reverse;
@@ -67,19 +68,21 @@ public class OI {
     public OI() {
 
         xbox = new Joystick(0);
-        Button button = new JoystickButton(xbox,5);
-        Button button1 = new JoystickButton(xbox,6);
-        Button button2 = new JoystickButton(xbox,3);
-        Button button3 = new JoystickButton(xbox,4);
-        Button button4 = new JoystickButton(xbox,1);
-        Button button5 = new JoystickButton(xbox,2);
-
+        Button button  = new JoystickButton(xbox,5); // Take Cube
+        Button button1 = new JoystickButton(xbox,6); // Release Cube
+        Button button2 = new JoystickButton(xbox,3); // Close Gripper
+        Button button3 = new JoystickButton(xbox,4); // Open Gripper
+        Button button4 = new JoystickButton(xbox,1); // Fold Gripper
+        Button button5 = new JoystickButton(xbox,2); // Release Gripper
+        Button button6 = new JoystickButton(xbox,7); // Close compressor
+        
         button.whileHeld(new takeCube());
         button1.whileHeld(new releaseCubeTeleop());
-         button2.whenPressed(new CloseGripper());
-         button3.whenPressed(new OpenGripper());
-         button4.whenPressed(new GripperFold());
-         button5.whenPressed(new GripperRelease());
+        button2.whenPressed(new CloseGripper());
+        button3.whenPressed(new OpenGripper());
+        button4.whenPressed(new GripperFold());
+        button5.whenPressed(new GripperRelease());
+        button6.whenPressed(new compressorSwitcher());
     }	
 
     public Joystick getxbox() {

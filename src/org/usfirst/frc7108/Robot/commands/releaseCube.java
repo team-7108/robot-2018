@@ -28,7 +28,7 @@ public class releaseCube extends Command
 		    protected void execute() 
 		    {
 		    
-		    	Robot.gripper.gripperRelease(0.8);
+		    	Robot.gripper.gripperRelease(1);
 		    	Robot.table.putBoolean("releaseCube", true);
 		    
 		    }

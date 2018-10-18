@@ -40,6 +40,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		else if(power < -1) {
 			power = -1;
 		}
+		/*
 		Robot.driveTrain.autonomousStop(-power);
 		System.out.print("Measured: ");
 		System.out.print(yawAngle);
@@ -48,6 +49,7 @@ import edu.wpi.first.wpilibj.command.Command;
 		System.out.print("Power: ");
 		System.out.println(power);
 		System.out.println("True Flag :    "+ true_flag);
+		*/
 		error_old = error;
 		if(yawAngle < angle+2 && yawAngle > angle-2) 
 		{

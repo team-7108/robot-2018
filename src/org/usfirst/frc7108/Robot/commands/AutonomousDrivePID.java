@@ -73,7 +73,7 @@ public class AutonomousDrivePID extends Command {
 		{right_power=-1;}
 		Robot.driveTrain.autonomousLeftMotor(left_power);
 		Robot.driveTrain.autonomousRightMotor(right_power);
-		
+		/*
 		System.out.println("Measured Distance:");
 		System.out.print(current_distance+ "		");
 		System.out.print("Error Distance");
@@ -87,7 +87,7 @@ public class AutonomousDrivePID extends Command {
 		System.out.print("Right Power :"); 
 		System.out.print(right_power);
 		System.out.println("True Flag:       "+ true_flag);
-		     
+		*/     
 		     
 		     
 		     distance_oldError= distance_error;

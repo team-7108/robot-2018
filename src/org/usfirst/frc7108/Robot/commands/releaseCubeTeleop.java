@@ -24,7 +24,7 @@ public class releaseCubeTeleop extends Command
 		    // Called repeatedly when this Command is scheduled to run
 		    protected void execute() 
 		    {
-		    Robot.gripper.gripperRelease(0.8); // may need to call getJoystick() method
+		    Robot.gripper.gripperRelease(1); // may need to call getJoystick() method
 		    }
 
 		    // Make this return true when this Command no longer needs to run execute()

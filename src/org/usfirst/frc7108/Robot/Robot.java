@@ -80,6 +80,7 @@ public class Robot extends TimedRobot
 	public static Ultrasonic ultrasonic;
 	public static NetworkTable table;
 	public static double x,y;
+	public static int compressorSwitchFlag = 0;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -88,7 +89,7 @@ public class Robot extends TimedRobot
    
     
     public Robot() {
-    	
+    	/*
     	try
         {
             Logging.CustomLogger.setup();
@@ -96,7 +97,7 @@ public class Robot extends TimedRobot
         catch (Throwable e) { Logging.logException(e);}
         
         Logging.consoleLog();
-
+		*/
     	
     }
     
@@ -124,7 +125,7 @@ public class Robot extends TimedRobot
         autoCG = new Autonomous();
         SmartDashboard.putData("Auto mode", chooser);
         
-        Logging.consoleLog();
+        // Logging.consoleLog();
     }
 
     /**
@@ -255,7 +256,7 @@ public class Robot extends TimedRobot
         */
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
-        System.out.println(yawAngle);
+        // System.out.println(yawAngle);
         table.putNumber("X",x);
         x += 1;
         y = table.getNumber("Y", 0.0);
@@ -280,9 +281,10 @@ public class Robot extends TimedRobot
         
     	table.putDouble("tyme", DriverStation.getInstance().getMatchTime());
     	
-        Logging.consoleLog("I can log any information I want");
-        Logging.consoleLog("Working..."); 
-       System.out.println("OK");
+    	
+        // Logging.consoleLog("I can log any information I want");
+        // Logging.consoleLog("Working..."); 
+        // System.out.println("OK");
 
         
   }
