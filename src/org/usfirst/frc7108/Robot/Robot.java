@@ -17,6 +17,7 @@ import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 import org.usfirst.frc7108.Robot.subsystems.CLifter;
 import org.usfirst.frc7108.Robot.subsystems.Gripper;
 import org.usfirst.frc7108.Robot.subsystems.Pneumatic;
+import org.usfirst.frc7108.Robot.utils.Arduino;
 import org.usfirst.frc7108.Robot.utils.Logging;
 import org.usfirst.frc7108.Robot.subsystems.DriveTrain;
 
@@ -80,6 +81,7 @@ public class Robot extends TimedRobot
 	public static Ultrasonic ultrasonic;
 	public static NetworkTable table;
 	public static double x,y;
+	public static Arduino arduino;
 	public static int compressorSwitchFlag = 0;
 
     /**
@@ -119,6 +121,12 @@ public class Robot extends TimedRobot
         ultrasonicfilter = new UltrasonicFilter();
         CameraServer.getInstance().startAutomaticCapture();
         table = NetworkTable.getTable("datatable");
+        arduino = new Arduino();
+        // OI must be constructed after subsystems. If the OI creates Commands
+        //(which it very likely will), subsystems are not guaranteed to be
+        // constructed yet. Thus, their requires() statements may grab null
+        // pointers. Bad news. Don't move it.
+        
         table.putBoolean("init", true);
         RobotMap.compresor.setClosedLoopControl(true);
         oi = new OI();
@@ -143,6 +151,15 @@ public class Robot extends TimedRobot
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
+        
+        
+        
+        
+        if(arduino.arduinoUSB.readString() == "sa") {
+        	arduino.writeToArduino("d");
+        }
+        	
+        }
         
     }
 
@@ -236,6 +253,18 @@ public class Robot extends TimedRobot
     	gyro.zeroGyro();
         
     	Logging.consoleLog();
+    	
+        if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red ) {
+        	// RED LED
+        	arduino.writeToArduino("a");
+        } else if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
+        	// BLUE LED
+        	arduino.writeToArduino("c");
+        }
+        else {
+        	// Couldn't get alliance color, give alert
+        	System.out.println("*WARNING* couldn't get alliance color");
+        }
 
     	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
