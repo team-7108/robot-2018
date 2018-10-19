@@ -22,7 +22,7 @@ public class GripperRelease extends Command {
 		 
 	}
 	protected boolean isFinished() {
-        return false;
+        return true;
     }
 	 protected void end() 
 	    {
