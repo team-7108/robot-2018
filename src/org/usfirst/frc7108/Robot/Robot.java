@@ -17,8 +17,6 @@ import org.usfirst.frc7108.Robot.sensors.mpuGyro;
 import org.usfirst.frc7108.Robot.subsystems.CLifter;
 import org.usfirst.frc7108.Robot.subsystems.Gripper;
 import org.usfirst.frc7108.Robot.subsystems.Pneumatic;
-import org.usfirst.frc7108.Robot.utils.Arduino;
-import org.usfirst.frc7108.Robot.utils.Logging;
 import org.usfirst.frc7108.Robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -80,31 +78,14 @@ public class Robot extends TimedRobot
 	public static UltrasonicFilter ultrasonicfilter;
 	public static Ultrasonic ultrasonic;
 	public static NetworkTable table;
-	public static double x,y;
-	public static Arduino arduino;
 	public static int compressorSwitchFlag = 0;
+	public static double x,y;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-   
-    
-    public Robot() {
-    	/*
-    	try
-        {
-            Logging.CustomLogger.setup();
-        }
-        catch (Throwable e) { Logging.logException(e);}
-        
-        Logging.consoleLog();
-		*/
-    	
-    }
-    
-    
-    
+    @Override
     public void robotInit() 
     {
         RobotMap.init();
@@ -121,19 +102,15 @@ public class Robot extends TimedRobot
         ultrasonicfilter = new UltrasonicFilter();
         CameraServer.getInstance().startAutomaticCapture();
         table = NetworkTable.getTable("datatable");
-        arduino = new Arduino();
+        
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         
-        table.putBoolean("init", true);
-        RobotMap.compresor.setClosedLoopControl(true);
         oi = new OI();
         autoCG = new Autonomous();
         SmartDashboard.putData("Auto mode", chooser);
-        
-        // Logging.consoleLog();
     }
 
     /**
@@ -151,17 +128,7 @@ public class Robot extends TimedRobot
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        
-        
-        
-        
-        if(arduino.arduinoUSB.readString() == "s") {
-        	arduino.writeToArduino("d");
-        }
-        	
-        }
-        
-    
+    }
 
     /**
      * This function is called once when the autonomous phase starts.
@@ -174,9 +141,6 @@ public class Robot extends TimedRobot
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		int station = DriverStation.getInstance().getLocation();
-		
-		Logging.consoleLog();
-
 
 		switch (station)  {
 		// Left
@@ -189,7 +153,7 @@ public class Robot extends TimedRobot
 	        		autoCG.addSequential(new LeftScaleFromLeftStart());
 	        		break;
 	        	case "LL":
-	        		autoCG.addSequential(new LeftScaleFromLeftStart());
+	        		autoCG.addSequential(new LeftSwitchFromLeftStart());
 	        		break;
 	        	case "RR":
 	        		autoCG.addSequential(new RightScaleFromLeftStart());
@@ -227,7 +191,7 @@ public class Robot extends TimedRobot
 	        		autoCG.addSequential(new LeftScaleFromRightStart());
 	        		break;
 	        	case "RR":
-	        		autoCG.addSequential(new RightScaleFromRightStart());
+	        		autoCG.addSequential(new RightSwitchFromRightStart());
 	        		break;
 	        	}
 	        	break;
@@ -239,8 +203,6 @@ public class Robot extends TimedRobot
     {
         Scheduler.getInstance().run();
          ultrasonic.ultrasonic1();
-         Logging.consoleLog();
-
         
     }
     
@@ -250,22 +212,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopInit() 
     {
-    	gyro.zeroGyro();
         
-    	Logging.consoleLog();
-    	
-        if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red ) {
-        	// RED LED
-        	arduino.writeToArduino("a");
-        } else if(DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
-        	// BLUE LED
-        	arduino.writeToArduino("c");
-        }
-        else {
-        	// Couldn't get alliance color, give alert
-        	System.out.println("*WARNING* couldn't get alliance color");
-        }
-
     	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
@@ -279,14 +226,11 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        /*
         System.out.print("Without smoothing  :   ");
         System.out.println(ultrasonic.ultrasonic1());
         System.out.println("With smoothing  :   " + ultrasonicfilter.getSmoothVal());
-        */
 	    gyro.updateGyro();
         double yawAngle = gyro.getAngle();
-        // System.out.println(yawAngle);
         table.putNumber("X",x);
         x += 1;
         y = table.getNumber("Y", 0.0);
@@ -299,23 +243,15 @@ public class Robot extends TimedRobot
         }else {
         	boolean limitSwitchStatus = false;
         	table.putBoolean("Limit Switch Status", limitSwitchStatus);
-        	counter.reset();      
-        }
-    
-        int ult1 = (int) Ultrasonic.ultrasonic1();
-    	int ult2 = (int) Ultrasonic.ultrasonic2();
-    	
-    	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
-    	//Uncomment the next line to send the second sensors value
-    	//table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
-        
-    	table.putDouble("tyme", DriverStation.getInstance().getMatchTime());
-    	
-    	
-        // Logging.consoleLog("I can log any information I want");
-        // Logging.consoleLog("Working..."); 
-        // System.out.println("OK");
+        	counter.reset();
+        	
+         	int ult1 = (int) Ultrasonic.ultrasonic1();
+        	int ult2 = (int) Ultrasonic.ultrasonic2();
+        	
+        	table.putNumber("Ult. Sensor No.1 Cal. Distance", ult1);	        	
+            table.putNumber("Ult. Sensor No.2 Cal. Distance", ult2);
 
-        
+    }
+    
   }
 }
